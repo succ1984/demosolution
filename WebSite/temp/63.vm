@@ -1,0 +1,28 @@
+﻿        <div class="priceList widget">
+        <h3>$WidgetName</h3>
+#if($flg==1)
+        <ul>
+         #foreach( $item in $VendorPrice.Rows)
+        	<li>
+            	<div class="priceListBlc">
+
+                    <a target="_blank" href="/price_detail/${item.CarID}.html">#if($item.CarPic!="")<img src='$PageCommon.ImagesPath($item.CarPic,0)' #else <img src='$PageCommon.ImagesPath($item.ImgUrl1,1)' #end alt="$item.CSShowName $item.CarName #if($item.CarYearType!="") $item.CarYearType #end #if($item.Ready=="3")(未上市)#end"
+                        title="$item.CSShowName $item.CarName #if($item.CarYearType!="") $item.CarYearType #end #if($item.Ready=="3")(未上市)#end" /></a>
+                    <div class="title">
+                        <span class="brand"><a target="_blank" title="$item.CSShowName $item.CarName #if($item.CarYearType!="") $item.CarYearType #end #if($item.Ready=="3")(未上市)#end" href="/price_detail/${item.CarID}.html">$item.CSShowName&emsp;$item.CarName #if($item.CarYearType!="")&emsp;$item.CarYearType #end #if($item.Ready=="3")(未上市)#end</a></span>
+                        <span class="testdrive"><i></i><a  href="/price_detail/${item.CarID}.html?type=open&order=1" target="_blank">试驾</a></span>
+<span class="setcar"><i></i><a href="/price_detail/${item.CarID}.html?type=open" target="_blank">订车</a></span>
+                    </div>
+                    <div class="info">
+                        <span class="price">#if($item.Ready!="3")<span>$PageCommon.StringFormatSingle($item.vendorPrice)</span><small>万 </small>#else <span>待定</span> #end</span>
+                        <span class="date">$PageCommon.SetFormat($item.modifyTime,0)</span>
+                        <span class="new">#if($item.FavourableItem!="")<i></i><span title="$item.FavourableItem">$item.FavourableItem</span>#end</span>
+                    </div>
+                </div>
+            </li>
+        #end
+        </ul>
+#else
+<div class="blc_ept"></div>
+#end 
+</div>

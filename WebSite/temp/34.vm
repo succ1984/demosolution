@@ -1,0 +1,75 @@
+﻿ <div class="onlineSurvey widget">
+            <h3>$WidgetName</h3>
+#if($flg1==1 || $flg2==1)
+            <div class="onlineSurveyBlc"  id="VoteDiv">
+#set($SlelctType=1)
+#set($IsLock=0)
+#set($IsShowResult=1)
+#set($voteID=0)
+#set($VendorID=0)
+            #foreach( $item in $VoteTitle.Rows)
+#set($SlelctType=$item.SelectType)
+#set($IsLock=$item.IsLock)
+#set($IsShowResult=$item.IsShowResult)
+#set($voteID=$item.VoteID)
+#set($VendorID=$item.VendorID)
+            	<h4>$item.VoteTitle</h4>
+            #end
+                <ul>
+                  #foreach( $item in $VoteContent.Rows)
+                	<li>#if($SlelctType==1)<input type="radio"  name="buttonvote" id="$item.VoteDetailID" value="$item.VoteDetailID" />#else<input type="checkbox"  name="buttonvote" id="$item.VoteDetailID" value="$item.VoteDetailID" />#end <p>$item.DetailTitle </p></li>
+
+                  #end
+                </ul>
+#if($IsLock==1)
+<div id="submitDiv" class="im_vote_btns votes" style='display:none;'>
+                	<a href="javascript:;"  name="submitbutton" onclick="SubmitVote($VendorID,$voteID);" class="btn"><i>投票</i></a></div>
+<div id="resultDiv" class="im_vote_btns votes" style='display:block;'>
+                	<span>感谢您参与本次投票！</span> &nbsp;#if($IsShowResult==1)<a href="javascript:void(0)" onclick="GetViewVote($voteID);" class="btn"><i>查看结果</i></a>#end</div>
+#else
+<div id="submitDiv" class="im_vote_btns votes" style='display:block;'>
+                	<a  href="javascript:;"  name="submitbutton" onclick="SubmitVote($VendorID,$voteID);" class="btn"><i>投票</i></a></div>
+<div id="resultDiv" class="im_vote_btns votes" style='display:none;'>
+                	<span>感谢您参与本次投票！</span> &nbsp;#if($IsShowResult==1)<a href="javascript:void(0)" onclick="GetViewVote($voteID);" class="btn"><i>查看结果</i></a>#end</div>#end
+            
+            </div>
+        </div>
+
+<div class="wd_alert" id="investRuselt" style="display: none;">
+    <h3>
+        在线调查</h3>
+    <div class="wd_alert_blc">
+        <div class="oderdetail">
+#foreach( $item in $VoteTitle.Rows)
+#set($SlelctType=$item.SelectType)
+#set($IsLock=$item.IsLock)
+#set($IsShowResult=$item.IsShowResult)
+#set($voteID=$item.VoteID)
+#set($VendorID=$item.VendorID)
+            <h3 class="oder_diaocha_h3">
+                $item.VoteTitle</h3>
+            <p class="oder_diaocha_p">
+                $item.VoteContent</p>#end
+            <ul id="Resultli" class="oder_diaocha">
+#foreach( $item in $VoteContent.Rows)
+                        <li class="li0$velocityCount">
+                            <label title='$item.DetailTitle'>
+                                ${velocityCount}、$item.DetailTitle
+                            </label>
+                            <div id="Vote_$velocityCount" style="float: left;">
+                            </div>
+                        </li>
+                   #end
+            </ul>
+        </div>
+        <div class="wd_btns wd_btns_c">
+            <input type="button" id="close_btnvote" value="关闭"></div>
+    </div>
+    <span class="more"><a title="关闭" href="javascript:;" id="investRuseltClose" class="alert_close">
+        关闭</a></span>
+#else
+<div class="blc_ept"></div>
+#end 
+</div>
+<script type="text/javascript" language="javascript" src="/javascript/MemberSite.js"></script>
+<script type="text/javascript">ReadcookieVote($voteID,$VendorID);</script>

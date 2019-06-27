@@ -1,0 +1,31 @@
+﻿<div class="job widget">
+            <h3>$WidgetName</h3>
+#if($flg==1)
+            <div class="jobBlc">
+            	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <colgroup>
+                        <col class="post" />
+                        <col class="num" />
+                        <col class="date" />
+                    </colgroup>
+                  <tr>
+                    <th class="post">职位</th>
+                    <th class="num">人数</th>
+                    <th class="date">发布时间</th>
+                  </tr>
+              #foreach( $item in $DealerJobs.Rows)
+                  <tr>
+                                        <td><a target="_blank" href="/postdetail/${item.JobID}.html">$item.JobName</a></td>
+                     <td class="num">
+#if ($item.PersonNum==0) 若干#else$item.PersonNum#end人</td>
+                    <td class="date_zp">$PageCommon.SetFormat($item.PubTime,0)</td>
+                  </tr>
+              #end
+                </table>
+
+            </div>
+            <span class="more"><a href="/postlist.html">更多&gt;&gt;</a></span>
+#else
+<div class="blc_ept"></div>
+#end 
+        </div>

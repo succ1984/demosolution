@@ -1,0 +1,34 @@
+﻿#set( $result = 0 ) 
+#if($MenuPosition==1)<div id="SiteMenu" class="lm_menu widget">
+    #end#if($MenuPosition==2)<div id="SiteMenu" class="lm_menu  lm_menu_c widget">
+        #end #if($MenuPosition==3)<div id="SiteMenu" class="lm_menu lm_menu_r widget">
+            #end<ul>#foreach($itemOne in $SiteMenu.Rows)
+            #if( $result < 10 )
+              #if($itemOne.MenuParert==0  && $itemOne.IsShow==1)
+                #if($itemTwo.bbsState==0 && $itemTwo.MenuItemID==6)
+                    #set( $result = $result+1 )
+                 #end
+                 #if($itemOne.MenuItemID !=6 )
+                    #set( $result = $result+1 )
+                 #end
+              #end
+#if(($itemOne.MenuLevel==1 || $itemOne.MenuLevel==0 )&& $itemOne.MenuParert==0  && $itemOne.IsShow==1)<li #if($itemOne.bbsState==0 && $itemOne.MenuItemID==6)   style="display:none"   #end ><span>#if($itemOne.MenuType==0)<a href="$itemOne.IndexPage">$itemOne.MenuName</a>#end#if($itemOne.MenuType==1 )<a      
+                        href="$itemOne.PageUrl"    target="_blank" >$itemOne.MenuName</a>#end#if($itemOne.MenuType==2)<a href="$PageCommon.GetSinglePageUrl($itemOne.SinglePageID)">$itemOne.MenuName</a>#end#if($itemOne.MenuType==3)<a
+                            href="javascript:void(0);">$itemOne.MenuName</a>#end</span><div class="sub">
+                                #foreach( $itemTwo in $SiteMenu.Rows)#if($itemTwo.MenuParert==$itemOne.MenuID)#if($itemTwo.MenuType==0 && $itemTwo.IsShow==1)<a   #if($itemTwo.bbsState==0 && $itemTwo.MenuItemID==6)   style="display:none"   #end
+                                    href="$itemTwo.IndexPage">$itemTwo.MenuName</a>#end#if($itemTwo.MenuType==1 && $itemTwo.IsShow==1)<a href="$itemTwo.PageUrl"   target="_blank" >$itemTwo.MenuName</a>#end#if($itemTwo.MenuType==2 && $itemTwo.IsShow==1)<a
+                                        href="$PageCommon.GetSinglePageUrl($itemTwo.SinglePageID)">$itemTwo.MenuName</a>#end#if($itemTwo.MenuType==3 && $itemTwo.IsShow==1)<a
+                                            href="javascript:void(0);">$itemTwo.MenuName</a>#end#end#end</div></li>#end 
+
+#end
+#end
+
+</ul>
+
+            <script type="text/javascript">
+        $(document).ready(function() { $(".lm_menu li").hover(function() { $(this).addClass("hover"); if ($(this).find("div").find("a").length > 0) {
+                    $(this).find("div").slideDown(100);
+                } }, function() { $(this).parent().find("div").slideUp(100); $(this).removeClass("hover"); }) });
+            </script>
+
+        </div>

@@ -1,0 +1,13 @@
+﻿<div class="companyAlbum widget">
+            <h3>企业相册</h3>
+            <ul>
+            	<li><a href="#"><img src="else/120X80.png" alt="图片" title="图片" /></a><strong><a href="#">店面照片店面照片照</a></strong><i>165张</i></li>
+            	<li><a href="#"><img src="else/120X80.png" alt="图片" title="图片" /></a><strong><a href="#">店面照片店面照片照</a></strong><i>165张</i></li>
+            	<li><a href="#"><img src="else/120X80.png" alt="图片" title="图片" /></a><strong><a href="#">店面照片店面照片照</a></strong><i>165张</i></li>
+            	<li><a href="#"><img src="else/120X80.png" alt="图片" title="图片" /></a><strong><a href="#">店面照片店面照片照</a></strong><i>165张</i></li>
+            	<li><a href="#"><img src="else/120X80.png" alt="图片" title="图片" /></a><strong><a href="#">店面照片店面照片照</a></strong><i>165张</i></li>
+            	<li><a href="#"><img src="else/120X80.png" alt="图片" title="图片" /></a><strong><a href="#">店面照片店面照片照</a></strong><i>165张</i></li>
+            	<li><a href="#"><img src="else/120X80.png" alt="图片" title="图片" /></a><strong><a href="#">店面照片店面照片照</a></strong><i>165张</i></li>
+            </ul>
+            <span class="more"><a href="#">更多&gt;&gt;</a></span>
+        </div>

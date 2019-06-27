@@ -1,0 +1,22 @@
+﻿<div class="news widget">
+            <h3>$WidgetName</h3>
+#if($flg==1)
+            <div class="newsBlc">
+                <ul>
+         #foreach( $item in $DealerEnterpriseNews.Rows ) 
+#set($hrefF="/newsdetail/")
+#if($item.NewsType==1)
+#set($hrefF="/newsdetail/1/")
+#end
+#set($hrefE=".html")      
+            <li>
+               <a target="_blank" href="$hrefF$item.NewsID$hrefE" title="$item.NewsTitle">$PageCommon.CutString($item.NewsTitle,18)</a><small>$PageCommon.SetFormat($item.NewsPubTime,1)</small>
+            </li>
+         #end 
+                </ul>
+            </div>
+            <span class="more"><a href="/newslist.html">更多&gt;&gt;</a></span>
+#else
+<div class="blc_ept"></div>
+#end 
+        </div>

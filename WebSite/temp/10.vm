@@ -1,0 +1,31 @@
+﻿<div class="qa widget">
+    <h3>$WidgetName</h3>
+    <ul>
+    #if($flg1==1 )
+        #foreach( $item in $DealerQuestion.Rows)
+        <li>
+            <p class="quiz" title="$item.QTitle">
+               $PageCommon.CutString($item.QTitle,48)
+            </p>
+            <div class="from">
+                <span>
+    #if($item.UserName=="易车网友")网友#else$item.UserName#end
+ 提问于</span> <q>$PageCommon.SetFormat($item.CreateTime,2)</q></div>
+            #if($item.ReplyBody!="")
+#if($item.ISReply==1)
+ <div class="answer"><span>回复：</span><p title="$item.ReplyBody">  $PageCommon.CutString($item.ReplyBody,36) </p><i></i>
+                    </div>#end
+
+
+            #end 
+        </li>
+        #end
+
+    </ul>
+#else
+<div class="blc_ept"></div>
+#end 
+#foreach( $item in $QuestionCount.Rows)
+    <span class="more"><a href="/question.html">全部<i>$item.RowCount条</i>提问</a> | <a href="/question.html?type=open">我要提问</a></span>
+#end
+</div>

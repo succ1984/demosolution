@@ -1,0 +1,22 @@
+﻿<div class="subbrandAlien widget">
+            <h3>$WidgetName</h3>
+#if($flg1==1)
+            <div class="subbrandAliens">
+               #foreach($item in $MasterBrand.Rows)
+#set($MasterBrandID=$item.MasterBrandID)
+                <div class="subbrandAlien_blc">
+                    <a href="/autolist-${MasterBrandID}.html"><img title="$item.bs_Name" alt="$item.bs_Name" src="$item.PicUrl"></a>
+                    <dl>
+  #foreach($itemc in $SerialBrand.Rows)
+#if($item.MasterBrandID==$itemc.MasterBrandID)                       <dd><a href="/cardetail/${itemc.SerialID}.html" title="$PageCommon.GetChildStr($itemc.cs_Name,$itemc.cs_ShowName)">$PageCommon.GetChildStr($itemc.cs_Name,$itemc.cs_ShowName)</a></dd>#end
+  #end
+                    </dl>
+                </div>
+               #end 
+            </div>
+#else
+
+<div class="blc_ept"></div>
+
+#end 
+        </div>

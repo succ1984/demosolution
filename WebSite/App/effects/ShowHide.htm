@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Show Hide 测试</title>
+    <style type="text/css">
+        .buttons{   
+            border:1px solid #CDCDCD;
+            margin-bottom:10px;
+        }
+    </style>
+
+    <script src="../../js/jsLib.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+        JU.domReady(function () {
+            var btnShow = document.getElementById("btnShow");
+            var btnHide = document.getElementById("btnHide");
+            var divTest = document.getElementById("divTest");
+            btnShow.onclick = function (e) {
+                JU.effect.show(divTest);
+            }
+            btnHide.onclick = function (e) {
+                JU.effect.hide(divTest);
+            }
+        });
+    </script>
+</head>
+<body>
+    <div class="buttons">
+        <input type="button" id="btnShow" value="Show" />
+        <input type="button" id="btnHide" value="Hide" />
+    </div>
+    <div id="divTest">
+        <pre>
+        解决办法是在页面预先写入如下内容：
+ var ie = navigator.appVersion.match(/MSIE (\d\.\d)/);
+ if (ie)
+ {
+  document.write('<?import namespace = v urn = "urn:schemas-microsoft-com:vml" implementation = "#default#VML" declareNamespace /><v:oval/>');
+ } 
+然后注释掉动态添加的vml内容中的namespaces和oval：
+
+//document.namespaces.add('v', 'urn:schemas-microsoft-com:vml', "#default#VML");
+
+var style = ele.ownerDocument.createStyleSheet();
+style.addRule('v\\:shape', "behavior: url(#default#VML);");
+
+//style.addRule('v\\:oval', "behavior: url(#default#VML);");
+
+原因应该是IE8对于oval的支持有点问题。
+
+如果IE支持SVG！！！
+        </pre>
+    </div>
+</body>
+</html>

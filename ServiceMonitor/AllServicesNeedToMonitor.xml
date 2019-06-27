@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<AllServices>
+    <Service Name="从期刊总库中拉取文章的服务"></Service>
+    <Service Name="传真"></Service>
+</AllServices>

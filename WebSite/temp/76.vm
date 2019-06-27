@@ -1,0 +1,11 @@
+﻿#if($IsShowMuduleBanner == 0)
+<div class="part_pics widget" style="display:none;" id="pageimage">
+#else
+<div class="part_pics widget" id="pageimage">
+#end
+#if($flg==1)
+$PageCommon.GetBanner($SiteBanner)      
+#else
+<img src="images/part_pics.png" alt="栏目图" />
+#end
+</div>

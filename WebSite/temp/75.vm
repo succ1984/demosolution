@@ -1,0 +1,7 @@
+﻿#if($IsShowIndexBanner==1)
+<div class="head_pics widget"  id="indeximage">
+#else
+<div class="head_pics widget" style="display:none;" id="indeximage">
+#end
+<div id="indexflash">$PageCommon.GetIndexBanner($SiteIndexBannerType.SkinID,$SiteIndexBannerType.VendorID,$SiteIndexBannerType.BannerType,$SiteIndexBannerType.HtmlFileUrl)</div>
+</div>

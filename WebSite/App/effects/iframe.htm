@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Iframe 延迟加载与回调 与JS的异步加载与回调..</title>
+    <style type="text/css">
+
+      *{
+          margin:0px; padding:0px; 
+        }
+        .page
+        {
+           width:1120px; 
+           margin:0 auto;
+        }
+        .buttons{   
+            border:1px solid #CDCDCD;            
+        }
+        .buttons .photo_box{
+           width:200px; height:140px;
+           padding: 4px;
+           background: #fff;
+           border: 1px solid #e9e9e9;
+           clear: both;
+           background:url(images/loading-jd.gif);
+           background-position:center center;
+           background-repeat:no-repeat;
+        }
+        
+    </style>
+    <script src="../../js/jsLib.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        JU.domReady(function () {
+            lazyLoadDealerMap();
+            loadScript();
+        });
+        function lazyLoadDealerMap() {
+            var div = document.createElement("div");
+            div.innerHTML = "<iframe id=\"IFRAME1\" marginwidth=\"0\" marginheight=\"0\" src=\"http://map.dealer.easypass.cn/map/id_100003206/S_S/W_187/H_130/Z_12/google.htm\" frameborder=\"0\" width=\"187px\" height=\"130px\" scrolling=\"no\"></iframe>";
+            var getByClassName = function (className, tag) {
+                var results = [];
+                var divTags = document.getElementsByTagName(tag);
+                for (var i = 0; i < divTags.length; i++) {
+                    var divTag = divTags[i];
+                    if (divTag.className.indexOf(className) > -1) {
+                        results.push(divTag);
+                    }
+                }
+                return results;
+            };
+            var iFrame = div.firstChild;
+            JU.effect.loadIframe(iFrame, function () {
+                var divMsg = document.createElement("divMsg");
+                divMsg.style.color = "#FF0000";
+                divMsg.style.position = "absolute";
+                divMsg.style.left = "500px";
+                divMsg.style.top = "400px";
+                divMsg.innerHTML = "Local iframe is now loaded.";
+                document.body.appendChild(divMsg);
+            });
+            getByClassName("photo_box", "div")[0].appendChild(iFrame);
+            div = null;
+        }
+
+        function loadScript() {           
+            JU.effect.loadScript("http://misc.360buyimg.com/lib/js/2012/lib-v1.js", function () {
+                divMsg.innerHTML = "js is loaded!";
+            }, "utf-8");
+            var divMsg = document.createElement("divMsg");
+            divMsg.style.color = "#FF0000";
+            divMsg.style.position = "absolute";
+            divMsg.style.left = "500px";
+            divMsg.style.top = "300px";
+            divMsg.innerHTML = "js is loading..";
+            document.body.appendChild(divMsg);
+        }
+     
+    </script>
+</head>
+<body>
+    <div class="page">
+    
+        <div class="buttons">
+            <div class="photo_box">                                                            
+               
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

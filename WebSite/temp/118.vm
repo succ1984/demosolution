@@ -1,0 +1,143 @@
+﻿<div class="activity repairSearch widget" id="initDiv">
+            <h3>$WidgetName</h3>
+            <div class="repairSearch">
+                <ul>
+                	<li class="rs_car"><label><em>*</em>您的爱车</label><p><span id="WidgetsubBrandli"><select id="WidgetsubBrandIds" 
+
+name="WidgetsubBrandIds"><option value="">请选择车型</option></select></span> <span id="WidgetCarTypeli"><select id="WidgetCarType" name="WidgetCarType"><option 
+
+value="">请选择车款</option></select></span></p></li>
+                	<li class="rs_mile"><label><em>*</em>行驶里程</label><p><input type="text" maxlength="9" id="WidgetrunNum"> 公里</p></li>
+                	<li class="rs_time"><label>购车时间</label><p><span id="buyyearspans"><select id="" name=""><option value=""></option></select></span> <span 
+
+id="buymonthspans"><select id="" name=""><option value=""></option></select></span></p></li>
+                    <li><label></label><p><a class="btn" href="javascript:void(0)" onclick="btnWidgetClick()"><i>查询保养信息</i></a></p></li>
+                </ul>
+            </div>
+       <script type="text/javascript" language="javascript" src="/Javascript/jsLoad.js" charset="utf-8"></script>
+<script type="text/javascript">
+ $(window).load(function() {
+            var dl = new DynamicLoad();
+            dl.Load("/javascript/MemberSite.js");
+            dl.Load("/javascript/brand_temp.js");
+            dl.Load("/javascript/OrderNew.js");
+ });
+
+ViewAllCarsId = true;
+function BindDates(data) {
+        WidgetbindsbrandSome(data); Widgetbindmode(-1, -1);
+        var yearOption = "<select name=\"buyYears\" id=\"buyYears\" style=\"width: 105px;\" onchange=\"BindmonthDatas(this.value,-1);\"> <option value=\"-1\">年份</option>";
+
+        var currentYear = new Date().getFullYear();
+        for (var i = currentYear - 9; i <= currentYear; i++) {
+            yearOption += "<option value=\"" + i.toString() + "\">" + i.toString() + "</option>";
+        }
+        $("#buyyearspans").html(yearOption + "</select>");
+        $("#buymonthspans").html("<select name=\"buyMonths\" id=\"buyMonths\" style=\"width: 105px;\"><option value=\"-1\">月份</option></select>");
+    }
+
+    function BindmonthDatas(yearNum,select) {
+
+        var monthOption = "<select name=\"buyMonths\" id=\"buyMonths\" style=\"width: 105px;\"><option value='-1'>月份</option>";
+var currentYear = new Date().getFullYear();
+        var number=13;
+        var currentMonth=new Date().getMonth()+2;
+        if(yearNum==currentYear){
+           number=currentMonth;
+        }
+        if (yearNum > -1) {
+            for (var i = 1; i < number; i++) {
+                monthOption += "<option value='" + i + "'>" + i + "</option>";
+            }
+        }
+        $("#buymonthspans").html(monthOption + "</select>");
+    }
+
+    function btnWidgetClick() {
+        var errorMessage = "";
+        if (!gid("WidgetCarType") || gid("WidgetCarType").value == -1 || gid("WidgetCarType").value == 0) {
+            errorMessage += "请选择车型 <br />";
+
+        }
+        else
+          O.RemoveErrSpan(gid("WidgetCarType"))
+
+        if (gid("WidgetrunNum").value.length > 0) {
+            if (!O.CheckNum(gid("WidgetrunNum").value)) {
+                errorMessage += "填写行驶里程有误<br />";
+            }
+            else {
+                O.RemoveErrSpan(gid("WidgetrunNum"));
+            }
+        }
+        else {
+            errorMessage += "请填写行驶里程<br />";
+        }
+
+
+
+
+        
+        if (errorMessage.length > 0) {
+            $("#pErrorMsg8").html("<em class=\"warning\"><i></i>" + errorMessage + " </em>");
+            popload("WidgeterrorMessage");
+            return false;
+        }
+#if($CurrentRequestUrl=="www.qiche4s.cn")
+        window.open('/$DealerID/maintainsearch.html?csid=' + gid("WidgetsubBrandIds").value + '&carid=' + gid("WidgetCarType").value + "&runKM=" + gid("WidgetrunNum").value + 
+
+"&year=" + gid("buyYears").options[gid("buyYears").selectedIndex].value + "&month=" + gid("buyMonths").options[gid("buyMonths").selectedIndex].value);
+    
+#else
+window.open('/$DealerID/maintainsearch.html?csid=' + gid("WidgetsubBrandIds").value + '&carid=' + gid("WidgetCarType").value + "&runKM=" + gid("WidgetrunNum").value + 
+
+"&year=" + gid("buyYears").options[gid("buyYears").selectedIndex].value + "&month=" + gid("buyMonths").options[gid("buyMonths").selectedIndex].value);
+    
+#end
+}
+
+
+
+$(window).load(function(){
+ 		jQuery.ajax({
+                        type: "POST",
+                        url: "/Ajax/AjaxBrand.aspx",
+                        timeout: 20000,
+                        data: "&DealerID=$DealerID",
+                        beforeSend: function(XMLHttpRequest) {
+                           
+                        },
+                        success: function(data, textStatus) {
+			   eval("var data1=" + data);
+                           BindDates(data1.SerialID);
+
+                        },
+                        complete: function(XMLHttpRequest, textStatus) {
+                            //HideLoading();
+                        },
+                        error: function() {
+                            //请求出错处理
+                           
+                        }
+                    });
+
+
+
+
+
+ });
+
+
+</script>
+        </div>
+<div id="WidgeterrorMessage" style="display: none;">
+    <div id="ErrorMsg8" class="float_tips">
+        <p id="pErrorMsg8">
+            <em class="warning"><i></i>
+            </em>
+        </p>
+        <b></b><a class="btn_close" onclick="$('#WidgeterrorMessage').hide();$('#pErrorMsg8').html('');$('#popBox1').remove();$('#popIframe1').remove();return false;" 
+
+href="javascript:void(0);">
+            关闭</a></div>
+</div>

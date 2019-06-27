@@ -1,0 +1,510 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>自定义系统对话框 测试</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+   <!-- <link href="ibitauto_2012_common.css" rel="stylesheet" type="text/css" />-->
+    <script src="../../js/jsLib.js" type="text/javascript"></script>
+    <script src="../../js/lightBox.js?aaa" type="text/javascript"></script>
+    <script src="../../js/traceTool.js?222" type="text/javascript"></script>
+    <style type="text/css">
+        body{
+            height:100%;width:100%;
+        }
+        .buttons{   
+            border:1px solid #CDCDCD;
+            margin-bottom:10px;
+        }
+        
+        /*弹窗*/
+.ui-dialog{position: absolute; top: 0;left: 0; width: 490px;overflow: hidden;border: 5px solid #557DAE;background: none repeat scroll 0 0 #FFFFFF;}
+.ui-dialog .ui-dialog-titlebar{padding:5px 10px;position: relative; height:25px; background:#E7F5FF;}
+.ui-dialog .ui-dialog-title{color:#333333;font-size:14px;font-weight:800;line-height:25px;}
+.ui-dialog .ui-dialog-titlebar-close{position: absolute;right: .3em;top: 50%;width: 19px;margin: -10px 0 0 0;padding: 1px;height: 18px;}
+.ui-dialog a span.ui-icon-closethick{ width:12px; height:12px; background:url(images/lb-loginallbg_lh.png) no-repeat -188px -308px;display:block; line-height:100px; overflow:hidden;}
+.ui-dialog .ui-dialog-titlebar-close span{display: block;margin: 1px;}
+.ui-dialog .ui-dialog-titlebar-close:hover, .ui-dialog .ui-dialog-titlebar-close:focus{padding: 0;}
+.ui-dialog .ui-dialog-content{position: relative;border: 0;padding:10px;background: none;}
+.ui-dialog .ui-dialog-buttonpane{text-align: left;border-width: 1px 0 0 0;background-image: none;padding:10px 0; overflow:hidden; zoom:1;position:relative;}
+.ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset{position:relative; left:50%; float:left;}
+.ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset button{position:relative; left:-50%; float:left;}
+	/*桔黄色按钮*/
+	.ui_bottom_y{border-left:1px solid #cc6d00;border-top:1px solid #cc6d00;border-right:1px solid #cf760f;border-bottom:1px solid #d27104; float:left;margin:0 7px 0 0;height:26px; padding:0;background:url(images/lb-bt_bg_x_lh.png) repeat-x 0 0;}
+	.ui_bottom_y span.ui-button-text{color:#fff;font-weight:bold;text-align:center;height:24px;padding:2px 20px 3px;*padding:2px 15px 3px;cursor:pointer;_width:0;*overflow:visible;border:0; font-size:14px; display:block; word-break:keep-all; white-space:nowrap;}
+	/*蓝色按钮*/
+	.ui_bottom_b{border-left:1px solid #769dbc;border-top:1px solid #769dbc;border-right:1px solid #7ea3c0;border-bottom:1px solid #789fbe;float:left;margin-right:10px;height:26px; padding:0; background:url(images/lb-bt_bg_x_lh.png) repeat-x 0 -24px;}
+	.ui_bottom_b span.ui-button-text{color:#fff;font-weight:bold;text-align:center;height:24px;padding:2px 20px 3px;*padding:2px 15px 3px;cursor:pointer;_width:0;*overflow:visible;border:0; font-size:14px; display:block; word-break:keep-all; white-space:nowrap;}
+	/*灰色按钮*/
+	.ui_bottom_h{border:1px solid #a5a5a5;float:left;margin-right:10px;height:26px; padding:0; background:url(images/lb-bt_bg_x_lh.png) repeat-x 0 -67px;}
+	.ui_bottom_h span.ui-button-text{color:#fff;font-weight:bold;text-align:center;height:24px;padding:2px 20px 3px;*padding:2px 15px 3px;cursor:pointer;_width:0;*overflow:visible;border:0; font-size:14px; display:block; word-break:keep-all; white-space:nowrap;}
+
+.ui-widget-overlay{background: url("images/lb-ui-bg_flat_0_aaaaaa_40x100.png") repeat-x scroll 50% 50% #AAAAAA;opacity: 0.3;height: 100%;left: 0;position: absolute;top: 0;width: 100%;}/*蒙板*/
+
+       .scDialogWrapper
+       {
+           width:300px; /*overflow:hidden;*/
+       }
+       .scDialogContent
+       {
+           word-break:break-all;
+           word-wrap:break-word;
+       }
+        .scDialogContent p
+        {
+            margin-top:10px;
+        }
+       .scDialogTxt
+       {
+           width:95%;
+           border:1px solid #cccccc;
+           height:18px; line-height:18px;
+           padding:5px;
+       }
+       .dialog{
+            width:450px; height:550px;         
+            font-size:12px; color:#000000;  background-color:#FFFFFF;
+            border:2px solid #999999; 
+            display:none;
+       }
+       .dialog h2{
+            background-color:#E7F5FF;
+            height:25px; line-height:25px; text-align:left;
+            padding-left:10px;
+            position:relative;
+       }
+       .dialog p{
+            margin:10px;
+       }
+       .dialog .close {
+            position: absolute;
+            right: 10px;
+            top: 5px;
+            z-index: 2;
+        }
+        .dialog .close a{
+            background: url("images/lb-loginallbg_lh.png") no-repeat scroll -188px -308px transparent;
+            display: block;
+            height: 12px;
+            line-height: 100px;
+            overflow: hidden;
+            width: 12px;
+        }
+    </style>
+
+    <script type="text/javascript">
+        $ = function(id) {
+            return typeof id == "string" ? document.getElementById(id) : id;
+        };
+        JU.domReady(function () {
+            $("btnalert1").onclick = function() {
+                LightBox.alert({ content: "你点击了确定..", draggable: true, Fixed: true, Center: false }).setPosition({ x: 200, y: 200 });
+            };
+            $("btnalert2").onclick = function() {
+                LightBox.alert({
+                    title: "提示",
+                    content: "抱歉，你不能重复提交投诉！",
+                    btnText: "确定"
+                });
+            };
+            $("btnalert3").onclick = function() {
+                LightBox.alert({
+                    title: "提示",
+                    content: "抱歉，你不能重复提交投诉！",
+                    btnText: "确定",
+                    callback: function() {
+                        LightBox.alert("你点击了确定按钮哦!");
+                    }
+                });
+            };
+
+            $("btnconfirm1").onclick = function() {
+                LightBox.confirm({
+                    title: "确认提示",
+                    content: "你确定要删除该订单吗？"
+                });
+            };
+            $("btnconfirm2").onclick = function() {
+                LightBox.confirm({
+                    title: "确认提示",
+                    content: "你确定要删除该订单吗？",
+                    callbackOk: function() {
+                        LightBox.alert("你选择了确定");
+                    },
+                    callbackCancel: function() {
+                        LightBox.alert("你选择了取消");
+                    },
+                    draggable: true
+                });
+            };
+
+            $("btnprompt1").onclick = function() {
+                LightBox.prompt("请输入你的电话号码");
+            };
+
+            $("btnprompt2").onclick = function() {
+                LightBox.prompt("亲,请输入你的电话号码:", "13436300382");
+            };
+
+            $("btnprompt3").onclick = function() {
+                LightBox.prompt({
+                    title: "询问信息",
+                    content: "亲,请输入你的电话号码:",
+                    defaultValue: "13436300382",
+                    callbackOk: function(txt) {
+                        LightBox.alert("亲，你刚输入了:  " + txt);
+                    },
+                    draggable: true
+                });
+            };
+            LightBox.util.addHandler($("btnDivDialog"), "click", function () {
+                var divDialog = new LightBox("dialog", {
+                    draggable: true,
+                    dragHandle: $("dialogTitle"),
+                    closeLink: "linkDialogClose",
+                    Over: false
+                });
+                var offset = LightBox.util.getOffset("btnDivDialog");
+
+                divDialog.setPosition({ x: offset.x, y: offset.y + $("btnDivDialog").offsetHeight }).Show();
+            });
+
+            LightBox.util.addHandler($("btnDivDialogWithOverlay"), "click", function () {
+                var divDialogWithOverlay = new LightBox("dialog", {
+                    closeLink: "linkDialogClose",
+                    draggable: true,
+                    dragHandle: $("dialogTitle")
+                });
+                divDialogWithOverlay.Show();
+            });
+
+            LightBox.util.addHandler($("btnInclude1"), "click", function () {
+                LightBox.include({
+                    frameUrl: "http://www.qikan.com.cn",
+                    over:true,
+                    title: "图片选择",
+                    width: 678,
+                    height:360,
+                    draggable: true
+                });
+            });
+            LightBox.util.addHandler($("btnLoadTip"), "click", function () {
+                var loadTipBox = LightBox.loadTip("正在加载，请稍候..");
+                setTimeout(function() {
+                    loadTipBox.Close();
+                }, 3000);
+            });
+
+
+            //            LightBox.util.addHandler($("btnDivDialog"), "click", function () {
+            //                alert("aaabb");
+            //            });
+            //            trace.enabled = true;
+            //            trace.write($("btnDivDialog").onclick?$("btnDivDialog").onclick.toString():"没有onclick事件");
+
+        });
+       
+    </script>
+</head>
+<body>
+    <div style="height:220px;">
+        占位
+    </div>
+    <div class="buttons">
+        <input type="button" id="btnalert1" value="alert1" />
+        <input type="button" id="btnalert2" value="alert2" />
+        <input type="button" id="btnalert3" value="alert3" />
+    </div>
+
+     <div class="buttons">
+        <input type="button" id="btnconfirm1" value="confirm1" />
+        <input type="button" id="btnconfirm2" value="confirm2" />
+    </div>
+
+     <div class="buttons">
+        <input type="button" id="btnprompt1" value="prompt1" />
+        <input type="button" id="btnprompt2" value="prompt2" />
+        <input type="button" id="btnprompt3" value="prompt3" />
+    </div>
+
+    <div class="buttons">
+        <input type="button" id="btnDivDialog" value="Div Dialog(without overlay)" />
+        <input type="button" id="btnDivDialogWithOverlay" value="btnDivDialogWithOverlay" />
+    </div>
+    
+    
+    <div class="buttons">
+        <input type="button" id="btnInclude1" value="dialog include" />
+       
+    </div>
+    
+     <div class="buttons">
+        <input type="button" id="btnLoadTip" value="LoadTip test" />
+       
+    </div>
+
+    <div class="buttons" style="padding-left:200px;">
+       
+         <select id="selprovince" style=" width:350px;">
+                <option>11111</option>
+                <option>22222</option>
+                <option>11111</option>
+                <option>22222</option>
+                <option>11111</option>
+                <option>22222</option>
+                <option>11111</option>
+                <option>22222</option>
+            </select>
+            <br />
+
+             <select id="Select1" style=" width:350px;">
+                <option>11111</option>
+                <option>22222</option>
+                <option>11111</option>
+                <option>22222</option>
+                <option>11111</option>
+                <option>22222</option>
+                <option>11111</option>
+                <option>22222</option>
+            </select>
+            <br />
+            <div style="height:50px; width:800px;"></div>
+              <select id="Select2" style=" width:350px;">
+                <option>11111</option>
+                <option>22222</option>
+                <option>11111</option>
+                <option>22222</option>
+                <option>11111</option>
+                <option>22222</option>
+                <option>11111</option>
+                <option>22222</option>
+            </select>
+            <br />
+
+             <select id="Select3" style=" width:350px;">
+                <option>11111</option>
+                <option>22222</option>
+                <option>11111</option>
+                <option>22222</option>
+                <option>11111</option>
+                <option>22222</option>
+                <option>11111</option>
+                <option>22222</option>
+            </select>
+            <br />
+            <div style="height:50px; width:800px;"></div>
+          
+            <select id="Select4" style=" width:350px;">
+                <option>11111</option>
+                <option>22222</option>
+                <option>11111</option>
+                <option>22222</option>
+                <option>11111</option>
+                <option>22222</option>
+                <option>11111</option>
+                <option>22222</option>
+            </select>
+            <br />
+
+             <select id="Select5" style=" width:350px;">
+                <option>11111</option>
+                <option>22222</option>
+                <option>11111</option>
+                <option>22222</option>
+                <option>11111</option>
+                <option>22222</option>
+                <option>11111</option>
+                <option>22222</option>
+            </select>
+            <br />
+            <div style="height:50px; width:800px;"></div>
+          
+            <select id="Select6" style=" width:350px;">
+                <option>11111</option>
+                <option>22222</option>
+                <option>11111</option>
+                <option>22222</option>
+                <option>11111</option>
+                <option>22222</option>
+                <option>11111</option>
+                <option>22222</option>
+            </select>
+            <br />
+
+             <select id="Select7" style=" width:350px;">
+                <option>11111</option>
+                <option>22222</option>
+                <option>11111</option>
+                <option>22222</option>
+                <option>11111</option>
+                <option>22222</option>
+                <option>11111</option>
+                <option>22222</option>
+            </select>
+            <br />
+            <div style="height:50px; width:800px;"></div>
+          
+          
+        <br />
+        <p>
+            <a href="http://www.chinanews.com/" target="_blank">
+            中新网</a>9月10日电 据外电报道，叙利亚外长穆阿利姆10日表示，叙利亚“已经同意”了俄罗斯提出的叙利亚交出化学武器交由国际监管的提议。</p>
+        <p>
+            　　穆阿利姆在莫斯科与俄罗斯下议院议长会谈后说，昨天(9日)，叙利亚方面与俄罗斯外长拉夫罗夫举行了一轮非常富有成果的谈判，拉夫罗夫提出了有关化学武器的提议。</p>
+        <p>
+            　　他说，在昨天(9日)晚上，叙利亚就同意了俄罗斯的提议，这将阻止美国的侵略。</p>
+        <p>
+            　　美国国务卿克里9日称，只要叙利亚总统阿萨德在一个星期内交出所有的化学武器，就可以避免遭到外国的军事打击。</p>
+        <table align="left" border="0" cellpadding="0" cellspacing="0" 
+            style="padding-right:10px;">
+            <tr>
+                <td>
+                    <div id="adhzh" name="hzh">
+&nbsp;</div>
+                </td>
+            </tr>
+        </table>
+        <p>
+        </p>
+        <p>
+            　　俄罗斯外长拉夫罗夫随后回应说，如果叙利亚将化学武器交由国际社会监管可以避免军事打击，俄将立即介入对大马士革的斡旋。</p>
+        <p>
+            　　拉夫罗夫9日在与穆阿利姆会谈后说：“我们呼吁叙利亚领导人商讨将化学武器存放地置于国际监督之下，然后将化武逐步销毁，同时考虑加入《禁止化学武器公约》。”</p>
+        <p>
+            <a href="http://www.chinanews.com/" target="_blank">
+            中新网</a>9月10日电 据外电报道，叙利亚外长穆阿利姆10日表示，叙利亚“已经同意”了俄罗斯提出的叙利亚交出化学武器交由国际监管的提议。</p>
+        <p>
+            　　穆阿利姆在莫斯科与俄罗斯下议院议长会谈后说，昨天(9日)，叙利亚方面与俄罗斯外长拉夫罗夫举行了一轮非常富有成果的谈判，拉夫罗夫提出了有关化学武器的提议。</p>
+        <p>
+            　　他说，在昨天(9日)晚上，叙利亚就同意了俄罗斯的提议，这将阻止美国的侵略。</p>
+        <p>
+            　　美国国务卿克里9日称，只要叙利亚总统阿萨德在一个星期内交出所有的化学武器，就可以避免遭到外国的军事打击。</p>
+        <table align="left" border="0" cellpadding="0" cellspacing="0" 
+            style="padding-right:10px;">
+            <tr>
+                <td>
+                    <div id="adhzh2" name="hzh">
+&nbsp;</div>
+                </td>
+            </tr>
+        </table>
+        <p>
+        </p>
+        <p>
+            　　俄罗斯外长拉夫罗夫随后回应说，如果叙利亚将化学武器交由国际社会监管可以避免军事打击，俄将立即介入对大马士革的斡旋。</p>
+        <p>
+            　　拉夫罗夫9日在与穆阿利姆会谈后说：“我们呼吁叙利亚领导人商讨将化学武器存放地置于国际监督之下，然后将化武逐步销毁，同时考虑加入《禁止化学武器公约》。”</p>
+        <p>
+            &nbsp;</p>
+        <p>
+            <a href="http://www.chinanews.com/" target="_blank">
+            中新网</a>9月10日电 据外电报道，叙利亚外长穆阿利姆10日表示，叙利亚“已经同意”了俄罗斯提出的叙利亚交出化学武器交由国际监管的提议。</p>
+        <p>
+            　　穆阿利姆在莫斯科与俄罗斯下议院议长会谈后说，昨天(9日)，叙利亚方面与俄罗斯外长拉夫罗夫举行了一轮非常富有成果的谈判，拉夫罗夫提出了有关化学武器的提议。</p>
+        <p>
+            　　他说，在昨天(9日)晚上，叙利亚就同意了俄罗斯的提议，这将阻止美国的侵略。</p>
+        <p>
+            　　美国国务卿克里9日称，只要叙利亚总统阿萨德在一个星期内交出所有的化学武器，就可以避免遭到外国的军事打击。</p>
+        <table align="left" border="0" cellpadding="0" cellspacing="0" 
+            style="padding-right:10px;">
+            <tr>
+                <td>
+                    <div id="adhzh3" name="hzh">
+&nbsp;</div>
+                </td>
+            </tr>
+        </table>
+        <p>
+        </p>
+        <p>
+            　　俄罗斯外长拉夫罗夫随后回应说，如果叙利亚将化学武器交由国际社会监管可以避免军事打击，俄将立即介入对大马士革的斡旋。</p>
+        <p>
+            　　拉夫罗夫9日在与穆阿利姆会谈后说：“我们呼吁叙利亚领导人商讨将化学武器存放地置于国际监督之下，然后将化武逐步销毁，同时考虑加入《禁止化学武器公约》。”</p>
+        <p>
+            &nbsp;</p>
+        <p>
+            &nbsp;</p>
+        <p>
+            &nbsp;</p>
+        <p>
+            <a href="http://www.chinanews.com/" target="_blank">
+            中新网</a>9月10日电 据外电报道，叙利亚外长穆阿利姆10日表示，叙利亚“已经同意”了俄罗斯提出的叙利亚交出化学武器交由国际监管的提议。</p>
+        <p>
+            　　穆阿利姆在莫斯科与俄罗斯下议院议长会谈后说，昨天(9日)，叙利亚方面与俄罗斯外长拉夫罗夫举行了一轮非常富有成果的谈判，拉夫罗夫提出了有关化学武器的提议。</p>
+        <p>
+            　　他说，在昨天(9日)晚上，叙利亚就同意了俄罗斯的提议，这将阻止美国的侵略。</p>
+        <p>
+            　　美国国务卿克里9日称，只要叙利亚总统阿萨德在一个星期内交出所有的化学武器，就可以避免遭到外国的军事打击。</p>
+        <table align="left" border="0" cellpadding="0" cellspacing="0" 
+            style="padding-right:10px;">
+            <tr>
+                <td>
+                    <div id="adhzh0" name="hzh">
+&nbsp;</div>
+                </td>
+            </tr>
+        </table>
+        <p>
+        </p>
+        <p>
+            　　俄罗斯外长拉夫罗夫随后回应说，如果叙利亚将化学武器交由国际社会监管可以避免军事打击，俄将立即介入对大马士革的斡旋。</p>
+        <p>
+            　　拉夫罗夫9日在与穆阿利姆会谈后说：“我们呼吁叙利亚领导人商讨将化学武器存放地置于国际监督之下，然后将化武逐步销毁，同时考虑加入《禁止化学武器公约》。”</p>
+        <p>
+            &nbsp;</p>
+        <p>
+            &nbsp;</p>
+        <p>
+            <a href="http://www.chinanews.com/" target="_blank">
+            中新网</a>9月10日电 据外电报道，叙利亚外长穆阿利姆10日表示，叙利亚“已经同意”了俄罗斯提出的叙利亚交出化学武器交由国际监管的提议。</p>
+        <p>
+            　　穆阿利姆在莫斯科与俄罗斯下议院议长会谈后说，昨天(9日)，叙利亚方面与俄罗斯外长拉夫罗夫举行了一轮非常富有成果的谈判，拉夫罗夫提出了有关化学武器的提议。</p>
+        <p>
+            　　他说，在昨天(9日)晚上，叙利亚就同意了俄罗斯的提议，这将阻止美国的侵略。</p>
+        <p>
+            　　美国国务卿克里9日称，只要叙利亚总统阿萨德在一个星期内交出所有的化学武器，就可以避免遭到外国的军事打击。</p>
+        <table align="left" border="0" cellpadding="0" cellspacing="0" 
+            style="padding-right:10px;">
+            <tr>
+                <td>
+                    <div id="adhzh1" name="hzh">
+&nbsp;</div>
+                </td>
+            </tr>
+        </table>
+        <p>
+        </p>
+        <p>
+            　　俄罗斯外长拉夫罗夫随后回应说，如果叙利亚将化学武器交由国际社会监管可以避免军事打击，俄将立即介入对大马士革的斡旋。</p>
+        <p>
+            　　拉夫罗夫9日在与穆阿利姆会谈后说：“我们呼吁叙利亚领导人商讨将化学武器存放地置于国际监督之下，然后将化武逐步销毁，同时考虑加入《禁止化学武器公约》。”</p>
+        <p>
+            &nbsp;</p>
+    </div>
+    
+
+    <div id="dialog" class="dialog">
+        <h2 id="dialogTitle">
+            文章说明
+        </h2>
+        <p>上篇中说了通过SQL JOB的方式对数据库的同步，这一节作为上一节的延续介绍通过发布订阅的方式实现数据库之间的同步操作。发布订阅份为两个步骤：1、发布。2、订阅。首先在数据源数据库服务器上对需要同步的数据进行发布，然后在目标数据库服务器上对上述发布进行订阅。发布可以发布一张表的部分数据，也可以对整张表进行发布。下面分别介绍发布、订阅的过程。
+
+　　一、发布。发布需要用实际的服务器名称，不能使用服务器的IP地址进行。能发布的信息包括【表】、【存储过程】、【用户函数】如果使用IP会有错误，如下图：
+
+　　具体发布过程如下..
+        </p>
+        <p>上篇中说了通过SQL JOB的方式对数据库的同步，这一节作为上一节的延续介绍通过发布订阅的方式实现数据库之间的同步操作。发布订阅份为两个步骤：1、发布。2、订阅。首先在数据源数据库服务器上对需要同步的数据进行发布，然后在目标数据库服务器上对上述发布进行订阅。发布可以发布一张表的部分数据，也可以对整张表进行发布。下面分别介绍发布、订阅的过程。
+
+　　一、发布。发布需要用实际的服务器名称，不能使用服务器的IP地址进行。能发布的信息包括【表】、【存储过程】、【用户函数】如果使用IP会有错误，如下图：
+
+　　具体发布过程如下..
+        </p>
+
+       <div class="close">
+            <a id="linkDialogClose"  href="javascript:;">关闭</a>
+        </div>
+
+    </div>
+
+</body>
+</html>

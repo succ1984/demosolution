@@ -1,0 +1,23 @@
+﻿ <div class="lm_head widget" id="SetHead">
+#set($url=".dealer.bitauto.com")
+#foreach( $item in $VendorInfo.Rows)
+#if($IsShowTel==1)
+#set($CallCenterNumber=$PageCommon.GetVendor400TelPhone($DealerID))
+
+<i>联系电话：#if($CallCenterNumber!="")$PageCommon.Telphone($CallCenterNumber,$item.vendorTel,$CallCenterNumber) #else $item.vendorTel #end   </i>#end
+#end
+  #foreach( $item in $SiteLogo.Rows)
+                            <div class="logo" path="$PageCommon.LogoUrl($item.LogoFileUrl)">
+ 
+          <img src="$PageCommon.LogoUrl($item.LogoFileUrl)"  alt="" />
+  
+</div>
+#end 
+#foreach( $item in $VendorInfo.Rows)
+                            <span><strong>#if($FactorySetVendorName=="")#if($WidgetName=="")
+$item.vendorFullName #else $WidgetName #end #else $FactorySetVendorName #end</strong>
+ #if($IsShowURL==1)<q>#if($CurrentRequestUrl=='www.qiche4s.cn')$CurrentRequestUrl/$DealerID/#else $item.DomainName #end</q>#end </span>
+#end
+
+
+ </div>

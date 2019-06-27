@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head> 
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> 
+    <title>AJAX的刷新和前进后退问题解决</title>     
+    <script src="../../js/jquery-1.7.2.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        function processHash() {
+            var hashStr = location.hash.replace("#", "");
+            hashStr=hashStr.length>0?hashStr:1;
+            $("#txt1").val(hashStr);
+        }
+
+        $(function () {
+            $("#txt1").click(function () {
+                var i = parseInt($("#txt1").val());
+                i++;
+                $("#txt1").text(i);
+                location.hash = "#" + i;
+            });
+            window.onload = processHash;
+            window.onhashchange = processHash;
+        }); 
+
+
+    </script> 
+</head> 
+<body> 
+    <input type="text" id="txt1" value="" /> 
+</body> 
+</html>

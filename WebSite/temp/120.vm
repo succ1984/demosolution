@@ -1,0 +1,11 @@
+﻿<div class="intro widget">
+    <h3>
+        $WidgetName</h3>   
+    
+    #if($flg==1)
+            <p>$PageCommon.NewCutString($Repair.RepairDesc,$PageCommon.CInt($ShowLength))</p>
+     <a href="/repair.html" class="btn fr"><i>预约维修</i></a>
+#else
+<div class="blc_ept"></div>
+#end 
+</div>

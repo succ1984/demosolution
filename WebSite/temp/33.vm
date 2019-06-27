@@ -1,0 +1,26 @@
+﻿    <div class="activity widget">
+            <h3>$WidgetName</h3>
+#if($flg==1)
+#set($hrefF="/activitydetail/")
+#set($hrefE=".html")
+
+            <div class="activityBlc">
+            	
+                <a href="$hrefF$DealerActivity.ID$hrefE" target="_blank"><img src="$PageCommon.GetImagesPath($DealerActivity.LogoUrl)" alt="$DealerActivity.Title" title="$DealerActivity.Title" /></a>
+            	<h4><a href="$hrefF$DealerActivity.ID$hrefE" target="_blank">$DealerActivity.Title</a></h4>
+                <ul>
+                	<li><label>时&emsp;间：</label><p><span class="date">$PageCommon.GetFormatDateTime($DealerActivity.StartDateTime) </span>至<span class="date"> $PageCommon.GetFormatDateTime($DealerActivity.EndDateTime)</span></p></li>
+                	<li><label>地&emsp;点：</label><p>$DealerActivity.Address</p></li>
+                  #if($DealerActivity.Category >= 100)
+                	<li><label>车&emsp;型：</label><p>$DealerActivity.SerialName</p></li>
+                  #end
+                	<li><label>联系人：</label><p>$DealerActivity.ContactPerson</p></li>
+                	<li><label>电&emsp;话：</label><p>$DealerActivity.Telephone  $DealerActivity.Cellphone</p></li>
+                </ul>
+               $PageCommon.GetActiveMore($DealerActivity.ID,$DealerActivity.EndDateTime,$DealerActivity.VendorID,$DealerActivity.JoinerCount,$DealerActivity.MaxJoiner,$DealerActivity.StartDateTime)
+            </div>
+            <span class="more"><a href="/activitylist.html">更多&gt;&gt;</a></span>
+#else
+<div class="blc_ept"></div>
+#end 
+        </div>

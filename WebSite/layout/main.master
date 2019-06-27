@@ -1,0 +1,58 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="main.master.cs" Inherits="layout_main" %>
+
+<%@ Register src="../usercontrols/loginview.ascx" tagname="loginview" tagprefix="uc1" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>   
+    
+</head>
+<body>
+
+    <div class="page">
+    
+        <div id="header">
+            <div class="loginview">                
+                <uc1:loginview ID="loginview1" runat="server" />
+            </div>    
+        </div>
+        
+        <div id="content">
+        
+            <form id="form1" runat="server">
+        
+                    <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+                    
+                    </asp:ContentPlaceHolder>
+            </form>
+        
+        </div>
+        
+        
+        <div id="footer">
+        
+        
+        </div>
+    
+    </div>
+  
+    <asp:Literal ID="ltlJs" runat="server"></asp:Literal>
+    <asp:ContentPlaceHolder id="placeHolderInlineJS" runat="server">
+                    
+    </asp:ContentPlaceHolder>
+  
+    <script type="text/javascript">
+      //<!CDATA[
+        //解决IE6 png图片问题
+        if (UA.isIE6) {
+            if (window.DD_belatedPNG) {
+                DD_belatedPNG.fix(".png");
+            }
+        }
+       // ]]
+    
+    </script>
+</body>
+</html>

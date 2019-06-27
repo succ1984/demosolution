@@ -1,0 +1,511 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CategoryViewConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" StoreID="7">
+	<ViewConfig>
+		<CategoryID>1</CategoryID>
+		<CategoryName>Sound Blaster</CategoryName>
+		<CategoryMenu>
+			<Name>View by Usage</Name>
+			<Url>?catid=1&amp;listby=usage</Url>
+		</CategoryMenu>
+		<CategoryMenu>
+			<Name>View by Platform</Name>
+			<Url>?catid=1&amp;listby=platform</Url>
+		</CategoryMenu>
+		<CategoryMenu>
+			<Name>View by Brand</Name>
+			<Url>?catid=1&amp;listby=brand</Url>
+		</CategoryMenu>
+		<MenuFromSubcategory>false</MenuFromSubcategory>
+
+		<ItemHeight>170</ItemHeight>
+		<ItemLimit>100</ItemLimit>
+
+		<ItemMaxHeight>0</ItemMaxHeight>
+		<DefaultAttribute>12</DefaultAttribute>
+		<DisplayAdvisor>true</DisplayAdvisor>
+		<DisplayCompare>true</DisplayCompare>
+		<FilterByPrice>
+			<Name>Filter by Price:</Name>
+			<Url>javascript:;</Url>
+		</FilterByPrice>
+		<FilterByPrice>
+			<Name>Below $50</Name>
+			<Url>searchPrice(0,50,'Below $50')</Url>
+			<Id>0-50</Id>
+		</FilterByPrice>
+
+		<FilterByPrice>
+			<Name>$50 - $100</Name>
+			<Url>searchPrice(50,100,'$50 - $100')</Url>
+			<Id>50-100</Id>
+		</FilterByPrice>
+
+		<FilterByPrice>
+			<Name>$100 - $199</Name>
+			<Url>searchPrice(100,199,'$100 - $199')</Url>
+			<Id>100-199</Id>
+		</FilterByPrice>
+		<FilterByPrice>
+			<Name>$200 - $300</Name>
+			<Url>searchPrice(200,300,'$200 - $300')</Url>
+			<Id>200-300</Id>
+		</FilterByPrice>
+		<FilterByPrice>
+			<Name>Above $300</Name>
+			<Url>searchPrice(300,0,'Above $300')</Url>
+			<Id>300-0</Id>
+		</FilterByPrice>
+	</ViewConfig>
+	<ViewConfig>
+		<CategoryID>4</CategoryID>
+		<CategoryName>Speakers</CategoryName>
+		<CategoryMenu>
+			<Name>Usage</Name>
+			<Url>?catid=4&amp;listby=usage</Url>
+		</CategoryMenu>
+		<CategoryMenu>
+			<Name>Configuration</Name>
+			<Url>?catid=4&amp;listby=config</Url>
+		</CategoryMenu>
+		<CategoryMenu>
+			<Name>Brand</Name>
+			<Url>?catid=4&amp;listby=brand</Url>
+		</CategoryMenu>
+		<MenuFromSubcategory>false</MenuFromSubcategory>
+
+		<ItemHeight>170</ItemHeight>
+		<ItemLimit>100</ItemLimit>
+
+		<ItemMaxHeight>0</ItemMaxHeight>
+		<DefaultAttribute>12</DefaultAttribute>
+		<DisplayAdvisor>true</DisplayAdvisor>
+		<DisplayCompare>true</DisplayCompare>
+		<FilterByPrice>
+			<Name>Filter by Price:</Name>
+			<Url>javascript:;</Url>
+		</FilterByPrice>
+		<FilterByPrice>
+			<Name>Below $100</Name>
+			<Url>searchPrice(0,100,'Below $100')</Url>
+			<Id>0-100</Id>
+		</FilterByPrice>
+		<FilterByPrice>
+			<Name>$100 - $199</Name>
+			<Url>searchPrice(100,199,'$100 - $199')</Url>
+			<Id>100-199</Id>
+		</FilterByPrice>
+		<FilterByPrice>
+			<Name>$200 - $300</Name>
+			<Url>searchPrice(200,300,'$200 - $300')</Url>
+			<Id>200-300</Id>
+		</FilterByPrice>
+		<FilterByPrice>
+			<Name>Above $300</Name>
+			<Url>searchPrice(300,0,'Above $300')</Url>
+			<Id>300-0</Id>
+		</FilterByPrice>
+	</ViewConfig>
+	<ViewConfig>
+		<CategoryID>437</CategoryID>
+		<CategoryName>Headphones</CategoryName>
+		<MenuFromSubcategory>true</MenuFromSubcategory>
+		<HasAccessories>false</HasAccessories>
+		<ItemHeight>170</ItemHeight>
+		<ItemLimit>100</ItemLimit>
+
+		<ItemMaxHeight>0</ItemMaxHeight>
+		<DefaultAttribute>0</DefaultAttribute>
+		<DisplayAdvisor>true</DisplayAdvisor>
+		<DisplayCompare>true</DisplayCompare>
+		<FilterByPrice>
+			<Name>Filter by Price:</Name>
+			<Url>javascript:;</Url>
+		</FilterByPrice>
+		<FilterByPrice>
+			<Name>Below $100</Name>
+			<Url>searchPrice(0,100,'Below $100')</Url>
+			<Id>0-100</Id>
+		</FilterByPrice>
+		<FilterByPrice>
+			<Name>$100 - $200</Name>
+			<Url>searchPrice(100,200,'$100 - $200')</Url>
+			<Id>100-200</Id>
+		</FilterByPrice>
+		<FilterByPrice>
+			<Name>Above $200</Name>
+			<Url>searchPrice(200,0,'Above $200')</Url>
+			<Id>200-0</Id>
+		</FilterByPrice>
+	</ViewConfig>
+	<ViewConfig>
+		<CategoryID>218</CategoryID>
+		<CategoryName>Cameras</CategoryName>
+		<CategoryMenu>
+			<Name>Pocket Video Cams</Name>
+			<Url>/products/welcome.aspx?catid=833</Url>
+		</CategoryMenu>
+		<MenuFromSubcategory>true</MenuFromSubcategory>
+		<HasAccessories>false</HasAccessories>
+		<ItemHeight>170</ItemHeight>
+		<ItemLimit>100</ItemLimit>
+
+		<ItemMaxHeight>0</ItemMaxHeight>
+		<DefaultAttribute>0</DefaultAttribute>
+		<DisplayAdvisor>true</DisplayAdvisor>
+		<DisplayCompare>true</DisplayCompare>
+		<FilterByPrice>
+			<Name>Filter by Price:</Name>
+			<Url>javascript:;</Url>
+		</FilterByPrice>
+		<FilterByPrice>
+			<Name>Below $100</Name>
+			<Url>searchPrice(0,100,'Below $100')</Url>
+			<Id>0-100</Id>
+		</FilterByPrice>
+		<FilterByPrice>
+			<Name>$100 - $200</Name>
+			<Url>searchPrice(100,200,'$100 - $200')</Url>
+			<Id>100-200</Id>
+		</FilterByPrice>
+		<FilterByPrice>
+			<Name>Above $200</Name>
+			<Url>searchPrice(200,0,'Above $200')</Url>
+			<Id>200-0</Id>
+		</FilterByPrice>
+	</ViewConfig>
+	<ViewConfig>
+		<CategoryID>833</CategoryID>
+		<CategoryName>Pocket Video Cams</CategoryName>
+		<CategoryMenu>
+			<Name>Web Cameras</Name>
+			<Url>/products/welcome.aspx?catid=218</Url>
+		</CategoryMenu>
+		<MenuFromSubcategory>true</MenuFromSubcategory>
+
+		<ItemHeight>170</ItemHeight>
+		<ItemLimit>100</ItemLimit>
+
+		<ItemMaxHeight>0</ItemMaxHeight>
+		<DefaultAttribute>0</DefaultAttribute>
+		<DisplayAdvisor>true</DisplayAdvisor>
+		<DisplayCompare>true</DisplayCompare>
+		<FilterByPrice>
+			<Name>Filter by Price:</Name>
+			<Url>javascript:;</Url>
+		</FilterByPrice>
+		<FilterByPrice>
+			<Name>Below $100</Name>
+			<Url>searchPrice(0,100,'Below $100')</Url>
+			<Id>0-100</Id>
+		</FilterByPrice>
+		<FilterByPrice>
+			<Name>$100 - $200</Name>
+			<Url>searchPrice(100,200,'$100 - $200')</Url>
+			<Id>100-200</Id>
+		</FilterByPrice>
+		<FilterByPrice>
+			<Name>Above $200</Name>
+			<Url>searchPrice(200,0,'Above $200')</Url>
+			<Id>200-0</Id>
+		</FilterByPrice>
+	</ViewConfig>
+	<ViewConfig>
+		<CategoryID>98</CategoryID>
+		<CategoryName>Accessories</CategoryName>
+		<CategoryMenu>
+			<Name>View all Entertainment Tablets Accessories</Name>
+			<Url>?catid=98#subcat980</Url>
+		</CategoryMenu>
+		<CategoryMenu>
+			<Name>View all Portable Entertainment Devices Accessories</Name>
+			<Url>?catid=98#subcat989</Url>
+		</CategoryMenu>
+		<CategoryMenu>
+			<Name>View all MP3 Players Accessories</Name>
+			<Url>?catid=98#subcat981</Url>
+		</CategoryMenu>
+		<CategoryMenu>
+			<Name>View all Speakers Accessories</Name>
+			<Url>?catid=98#subcat986</Url>
+		</CategoryMenu>
+		<CategoryMenu>
+			<Name>View all Pocket Video Cams Accessories</Name>
+			<Url>?catid=98#subcat987</Url>
+		</CategoryMenu>
+		<CategoryMenu>
+			<Name>View all Sound Blaster Accessories</Name>
+			<Url>?catid=98#subcat988</Url>
+		</CategoryMenu>
+		<MenuFromSubcategory>false</MenuFromSubcategory>
+		<HasAccessories>false</HasAccessories>
+		<ItemHeight>170</ItemHeight>
+		<ItemLimit>100</ItemLimit>
+		<AccessoriesID />
+		<ItemMaxHeight>0</ItemMaxHeight>
+		<DefaultAttribute>0</DefaultAttribute>
+		<DisplayAdvisor>true</DisplayAdvisor>
+		<DisplayCompare>false</DisplayCompare>
+		<FilterByPrice>
+			<Name>Filter by Price:</Name>
+			<Url>javascript:;</Url>
+		</FilterByPrice>
+		<FilterByPrice>
+			<Name>Below $50</Name>
+			<Url>searchPrice(0,50,'Below $50')</Url>
+			<Id>0-100</Id>
+		</FilterByPrice>
+		<FilterByPrice>
+			<Name>$50 - $100</Name>
+			<Url>searchPrice(50,100,'$50 - $100')</Url>
+			<Id>50-100</Id>
+		</FilterByPrice>
+		<FilterByPrice>
+			<Name>Above $100</Name>
+			<Url>searchPrice(100,0,'Above $100')</Url>
+			<Id>100-0</Id>
+		</FilterByPrice>
+		<AdvisorInfoText>Let us help you pick the right accessory for your Creative products. To get started, simply select your Creative product on the right.</AdvisorInfoText>
+		<FindInfoText>Find accessories for the following products:</FindInfoText>
+	</ViewConfig>
+	<ViewConfig>
+		<CategoryID>908</CategoryID>
+		<CategoryName>Promotions</CategoryName>
+		<MenuFromSubcategory>false</MenuFromSubcategory>
+		<HasAccessories>false</HasAccessories>
+		<ItemHeight>170</ItemHeight>
+		<ItemLimit>100</ItemLimit>
+		<AccessoriesID />
+		<ItemMaxHeight>220</ItemMaxHeight>
+		<SubcategoryID_MaxHeight>-909-</SubcategoryID_MaxHeight>
+		<DefaultAttribute>0</DefaultAttribute>
+		<DisplayAdvisor>false</DisplayAdvisor>
+		<DisplayCompare>false</DisplayCompare>
+		<FilterByPrice>
+			<Name>Filter by Price:</Name>
+			<Url>javascript:;</Url>
+		</FilterByPrice>
+		<FilterByPrice>
+			<Name>Below $100</Name>
+			<Url>searchPrice(0,100,'Below $100')</Url>
+			<Id>0-100</Id>
+		</FilterByPrice>
+		<FilterByPrice>
+			<Name>$100 - $200</Name>
+			<Url>searchPrice(100,200,'$100 - $200')</Url>
+			<Id>100-200</Id>
+		</FilterByPrice>
+		<FilterByPrice>
+			<Name>Above $200</Name>
+			<Url>searchPrice(200,0,'Above $200')</Url>
+			<Id>200-0</Id>
+		</FilterByPrice>
+	</ViewConfig>
+	<ViewConfig>
+		<CategoryID>700</CategoryID>
+		<CategoryName>Bundled offers</CategoryName>
+		<MenuFromSubcategory>false</MenuFromSubcategory>
+		<HasAccessories>false</HasAccessories>
+		<ItemHeight>220</ItemHeight>
+		<ItemLimit>100</ItemLimit>
+		<AccessoriesID />
+		<ItemMaxHeight>0</ItemMaxHeight>
+		<DefaultAttribute>0</DefaultAttribute>
+		<DisplayAdvisor>false</DisplayAdvisor>
+		<DisplayCompare>false</DisplayCompare>
+		<FilterByPrice>
+			<Name>Filter by Price:</Name>
+			<Url>javascript:;</Url>
+		</FilterByPrice>
+		<FilterByPrice>
+			<Name>Below $50</Name>
+			<Url>searchPriceForSale(0,50,'Below $50')</Url>
+			<Id>0-50</Id>
+		</FilterByPrice>
+		<FilterByPrice>
+			<Name>$50 - $99.99</Name>
+			<Url>searchPriceForSale(50,99.99,'$50 - $99.99')</Url>
+			<Id>50-99.99</Id>
+		</FilterByPrice>
+		<FilterByPrice>
+			<Name>$100 - $149.99</Name>
+			<Url>searchPriceForSale(100,149.99,'$100 - $149.99')</Url>
+			<Id>100-149.99</Id>
+		</FilterByPrice>
+		<FilterByPrice>
+			<Name>$150 - $200</Name>
+			<Url>searchPriceForSale(150,200,'$150 - $200')</Url>
+			<Id>150-200</Id>
+		</FilterByPrice>
+		<FilterByPrice>
+			<Name>Above $200</Name>
+			<Url>searchPriceForSale(200,0,'Above $200')</Url>
+			<Id>200-0</Id>
+		</FilterByPrice>
+	</ViewConfig>
+	<ViewConfig>
+		<CategoryID>618</CategoryID>
+		<CategoryName>Refurbished</CategoryName>
+		<MenuFromSubcategory>false</MenuFromSubcategory>
+		<HasAccessories>false</HasAccessories>
+		<ItemHeight>220</ItemHeight>
+		<ItemLimit>100</ItemLimit>
+		<AccessoriesID />
+		<ItemMaxHeight>0</ItemMaxHeight>
+		<DefaultAttribute>0</DefaultAttribute>
+		<DisplayAdvisor>false</DisplayAdvisor>
+		<DisplayCompare>false</DisplayCompare>
+	</ViewConfig>
+	<ViewConfig>
+		<CategoryID>936</CategoryID>
+		<CategoryName>Freeshipping</CategoryName>
+		<MenuFromSubcategory>false</MenuFromSubcategory>
+		<HasAccessories>false</HasAccessories>
+		<ItemHeight>170</ItemHeight>
+		<ItemLimit>100</ItemLimit>
+		<AccessoriesID />
+		<ItemMaxHeight>0</ItemMaxHeight>
+		<DefaultAttribute>0</DefaultAttribute>
+		<DisplayAdvisor>false</DisplayAdvisor>
+		<DisplayCompare>false</DisplayCompare>
+		<FilterByPrice>
+			<Name>Filter by Price:</Name>
+			<Url>javascript:;</Url>
+		</FilterByPrice>
+		<FilterByPrice>
+			<Name>Below $50</Name>
+			<Url>searchPriceForSale(0,50,'Below $50')</Url>
+			<Id>0-50</Id>
+		</FilterByPrice>
+		<FilterByPrice>
+			<Name>$50 - $99.99</Name>
+			<Url>searchPriceForSale(50,99.99,'$50 - $99.99')</Url>
+			<Id>50-99.99</Id>
+		</FilterByPrice>
+		<FilterByPrice>
+			<Name>$100 - $149.99</Name>
+			<Url>searchPriceForSale(100,149.99,'$100 - $149.99')</Url>
+			<Id>100-149.99</Id>
+		</FilterByPrice>
+		<FilterByPrice>
+			<Name>$150 - $200</Name>
+			<Url>searchPriceForSale(150,200,'$150 - $200')</Url>
+			<Id>150-200</Id>
+		</FilterByPrice>
+		<FilterByPrice>
+			<Name>Above $200</Name>
+			<Url>searchPriceForSale(200,0,'Above $200')</Url>
+			<Id>200-0</Id>
+		</FilterByPrice>
+	</ViewConfig>
+	<ViewConfig>
+		<CategoryID>20000</CategoryID>
+		<CategoryName>Promos</CategoryName>
+		<MenuFromSubcategory>false</MenuFromSubcategory>
+		<HasAccessories>false</HasAccessories>
+		<ItemHeight>170</ItemHeight>
+		<ItemLimit>100</ItemLimit>
+		<AccessoriesID />
+		<ItemMaxHeight>0</ItemMaxHeight>
+		<DefaultAttribute>0</DefaultAttribute>
+		<DisplayAdvisor>false</DisplayAdvisor>
+		<DisplayCompare>false</DisplayCompare>
+		<FilterByPrice>
+			<Name>Filter by Price:</Name>
+			<Url>javascript:;</Url>
+		</FilterByPrice>
+		<FilterByPrice>
+			<Name>Below $50</Name>
+			<Url>searchPrice(0,50,'Below $50')</Url>
+			<Id>0-50</Id>
+		</FilterByPrice>
+		<FilterByPrice>
+			<Name>$50 - $99.99</Name>
+			<Url>searchPrice(50,99.99,'$50 - $99.99')</Url>
+			<Id>50-99.99</Id>
+		</FilterByPrice>
+		<FilterByPrice>
+			<Name>$100 - $149.99</Name>
+			<Url>searchPrice(100,149.99,'$100 - $149.99')</Url>
+			<Id>100-149.99</Id>
+		</FilterByPrice>
+		<FilterByPrice>
+			<Name>$150 - $200</Name>
+			<Url>searchPrice(150,200,'$150 - $200')</Url>
+			<Id>150-200</Id>
+		</FilterByPrice>
+		<FilterByPrice>
+			<Name>Above $200</Name>
+			<Url>searchPrice(200,0,'Above $200')</Url>
+			<Id>200-0</Id>
+		</FilterByPrice>
+	</ViewConfig>
+	<ViewConfig>
+		<CategoryID>948</CategoryID>
+		<CategoryName>Entertainment Devices / MP3 Players</CategoryName>
+		<MenuFromSubcategory>true</MenuFromSubcategory>
+
+		<ItemHeight>220</ItemHeight>
+		<ItemLimit>100</ItemLimit>
+
+		<ItemMaxHeight>0</ItemMaxHeight>
+		<DefaultAttribute>0</DefaultAttribute>
+		<DisplayAdvisor>true</DisplayAdvisor>
+		<DisplayCompare>true</DisplayCompare>
+		<FilterByPrice>
+			<Name>Filter by Price:</Name>
+			<Url>javascript:;</Url>
+		</FilterByPrice>
+
+		<FilterByPrice>
+			<Name>Below $100</Name>
+			<Url>searchPrice(0,100,'Below $100')</Url>
+			<Id>0-100</Id>
+		</FilterByPrice>
+		<FilterByPrice>
+			<Name>$100 - $200</Name>
+			<Url>searchPrice(100,200,'$100 - $200')</Url>
+			<Id>100-200</Id>
+		</FilterByPrice>
+		<FilterByPrice>
+			<Name>Above $200</Name>
+			<Url>searchPrice(200,0,'Above $200')</Url>
+			<Id>200-0</Id>
+		</FilterByPrice>
+	</ViewConfig>
+	<BrowseOtherMenu>
+		<Name>Sound Blaster</Name>
+		<Url>/products/welcome.aspx?catid=1</Url>
+	</BrowseOtherMenu>
+	<BrowseOtherMenu>
+		<Name>MP3 Players</Name>
+		<Url>/products/welcome.aspx?catid=213</Url>
+	</BrowseOtherMenu>
+	<BrowseOtherMenu>
+		<Name>MP3 Accessories</Name>
+		<Url>/products/welcome.aspx?catid=213#accessories</Url>
+	</BrowseOtherMenu>
+	<BrowseOtherMenu>
+		<Name>Speakers</Name>
+		<Url>/products/welcome.aspx?catid=4</Url>
+	</BrowseOtherMenu>
+	<BrowseOtherMenu>
+		<Name>Headphones &amp; Headsets</Name>
+		<Url>/products/welcome.aspx?catid=437</Url>
+	</BrowseOtherMenu>
+	<BrowseOtherMenu>
+		<Name>Pocket Video Cams</Name>
+		<Url>/products/welcome.aspx?catid=833</Url>
+	</BrowseOtherMenu>
+	<BrowseOtherMenu>
+		<Name>Web Cameras</Name>
+		<Url>/products/welcome.aspx?catid=218</Url>
+	</BrowseOtherMenu>
+	<BrowseOtherMenu>
+		<Name>SALE</Name>
+		<Url>/promotion.aspx?catid=908&amp;valueid=293</Url>
+	</BrowseOtherMenu>
+	<BrowseOtherMenu>
+		<Name>Accessories</Name>
+		<Url>/products/welcome.aspx?catid=98</Url>
+	</BrowseOtherMenu>
+</CategoryViewConfig>

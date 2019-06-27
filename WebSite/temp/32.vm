@@ -1,0 +1,35 @@
+﻿ <div class="video widget">
+            <h3>$WidgetName</h3>
+#if($flg==1)
+            <div class="videoBlc" title="$DealerVideo.VideoTitle">
+<script type="text/javascript" src="http://img4.bitautoimg.com/video/js/video20120330.js"></script>
+        <script type="text/javascript" src="http://image.bitautoimg.com/video/swfobject.js"></script>
+        <script type="text/javascript" src="http://img4.bitautoimg.com/video/js/news20120330.js "></script>
+
+        <script type="text/javascript">
+            vplay.objectId = 'videoplayer'; //flash播放器编号
+            vplay.objectSrc = '$DealerVideo.PlayLinkUrl';           //此字段为 DAS库VendorVideo 表中的SwfLinkUrl 如
+
+果 typeid：1为优酷视频 typeid:2为易车视频（typeid为2时可以不穿这个参数）
+
+            vplay.sourceId = '$DealerVideo.BitAutoSourceId';           //此字段为 DAS库VendorVideo 表中的
+
+BitAutoSourceId
+            vplay.typeId = '$DealerVideo.BitAutoTypeId';                //此字段为 DAS库VendorVideo 表中的
+
+BitAutoTypeId
+            vplay.videoId = '$DealerVideo.BitAutoVideoID';           // 此字段为 DAS库VendorVideo 表中的
+
+BitAutoVideoID
+            document.write(vplay.getHDPlayCode());
+
+            if (BitautoVideo && BitautoVideo.MobileDevice()) {
+                BitautoVideo.AttachEventForVideo();
+            }
+
+        </script>
+</div>
+#else
+<div class="blc_ept"></div>
+#end
+        </div>

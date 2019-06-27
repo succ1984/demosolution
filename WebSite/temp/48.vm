@@ -1,0 +1,11 @@
+﻿<div class="companyMap widget">
+            <h3>$WidgetName</h3>
+#if($flg==1)
+#if($DealerMap.IsShowMap == 1)
+            <div class="companyMapBlc"><iframe scrolling="no" height="400" frameborder="0" width="630" src="http://dealer.bitauto.com/VendorMap/GoogleMap.aspx?dID=$DealerMap.VendorID&amp;S=L&amp;W=630&amp;H=400&amp;Z=12" marginheight="0" marginwidth="0" id="IFRAME1"></iframe></div>
+#else
+<div class="blc_ept"></div>
+#end 
+#end
+
+        </div>

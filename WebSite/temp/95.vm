@@ -1,0 +1,12 @@
+﻿  <div class="links widget">
+            <h3>$WidgetName</h3>
+#if($flg==1)
+            <ul>
+         #foreach( $item in $DealerFriendlyLink.Rows)    
+        	<li><a target="_blank" href="$item.WebSiteUrl">$item.WebSiteName</a></li>
+          #end   
+            </ul>
+#else
+<div class="blc_ept"></div>
+#end 
+        </div>

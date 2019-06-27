@@ -1,0 +1,227 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>String exercise</title>
+    <style type="text/css">
+        *{
+            margin:0px; padding:0px;
+        }
+        body{
+            font-size:12px;
+            padding:10px;             
+        }
+        .buttons{   
+            border:1px solid #CDCDCD;
+            margin-bottom:10px;
+        }
+        .mt10{
+           margin-top:15px;
+           overflow:hidden;
+           padding:10px 10px 20px;
+           border:2px solid #E3E3E3;
+        } 
+        .fl{
+            float:left;
+        }      
+        .fr{
+            float:right;
+        }
+        .pre{
+            background-color:#CCCCCC;
+            color:Gray;
+        }
+        .formText{
+            width:200px;
+            border:1px solid #CCCDDD;
+            height:25px; line-height:25px;
+        }
+        .formButton{
+            margin-left:15px;
+            border:1px solid #CCCDDD;
+            
+            padding:5px;
+        }       
+        .mt10 h2{
+            font-size:15px; color:Black; font-weight:700;
+            background-color:#EEEEEE;
+            height:25px; line-height:25px;
+            padding-left:10px;
+        }
+        .mt10 p{          
+            padding:10px;
+        }
+        .mt10 p span{
+            display:block;
+            clear:both;
+            background-color:#EEEEEE;
+            line-height:18px;
+            overflow:hidden;
+            margin-top:5px; padding-left:20px;
+        }
+        .descrip{
+            background: none repeat scroll 0 0 #FFFFDD;
+            border: 1px solid #F3C16B;
+            clear: both;
+            overflow: hidden;
+            padding: 5px 10px;
+            font-size:12px;
+            line-height:1.5em;
+            word-wrap:break-word;
+            word-break:break-line;
+        }
+    </style>
+    <script src="../../js/jsLib.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        var base = JU.base
+            , util = JU.util
+            , stringHelper = util.stringHelper;
+        JU.domReady(function () {
+            base.$("btnTrim").onclick = function () {
+                var input = base.$("txtTrim").value
+                    , spResult = base.nextSibling(this, "span")
+                    , szResult = "";
+                szResult = stringHelper.trim(input);
+                spResult.innerHTML = input + "(原始)" + szResult + "（转换后）";
+            };
+
+            base.$("btnTrimStart").onclick = function () {
+                var input = base.$("txtTrimStart").value
+                    , spResult = base.nextSibling(this, "span")
+                    , szResult = "";
+                szResult = stringHelper.trimStart(input);
+                spResult.innerHTML = input + "(原始)" + szResult + "（转换后）";
+            };
+
+            base.$("btnTrimEnd").onclick = function () {
+                var input = base.$("txtTrimEnd").value
+                    , spResult = base.nextSibling(this, "span")
+                    , szResult = "";
+                szResult = stringHelper.trimEnd(input);
+                spResult.innerHTML = input + "(原始)" + szResult + "（转换后）";
+            };
+            base.$("btnGetRequestParam").onclick = function () {
+                var input = base.$("txtUrl").value
+                    , spResult = base.nextSibling(this, "span")
+                    , szResult = "";
+                szResult = stringHelper.getRequestParam(input, "name") + "(name)" + stringHelper.getRequestParam(input, "sex") + "(sex)" + stringHelper.getRequestParam(input, "age") + "(age)";
+                spResult.innerHTML = szResult;
+            };
+
+            document.getElementById("btnMostFrequent").onclick = function () {
+                var regex = /\s/
+                    , temp = stringHelper.countMostFrequentChar(document.getElementById("txtMostFrequent").value)
+                    , spResult = base.nextSibling(this, "span")
+                    , i = 0
+                    , szResult = "";
+
+                if (temp.length > 0) {
+                    for (i = 0; i < temp.length; i++) {
+                        var item = temp[i];
+                        szResult = szResult + "char: " + item["char"];
+                        szResult = szResult + ", count:" + item["count"];
+                        szResult += "<br/>";
+                    }
+                }
+                else {
+                    szResult = "Not found..";
+                }
+                spResult.innerHTML = szResult;
+            };
+
+            base.$("btnGetJsonDate").onclick = function () {
+                var input = base.$("txtDate")
+                    , spResult = base.nextSibling(this, "span")
+                    , now = new Date
+                    , nowJson = "\/Date(NOW)\/".replace("NOW", now.getTime())
+                    , szResult = "";
+                szResult = stringHelper.formatJsonDate(nowJson, 0) + "   " + stringHelper.formatJsonDate(nowJson, 1);
+                spResult.innerHTML = szResult;
+                input.value = now.toLocaleString();
+            };
+
+        });
+    </script>
+</head>
+<body>
+    <div class="mt10">
+        <h2>
+            trim</h2>
+        <p>
+            <input id="txtTrim" type="text" value="" class="formText" />
+            <input id="btnTrim" type="button" class="formButton" value="GO.." />
+            <span>
+            </span>
+        </p>
+        <pre class="descrip">
+        </pre>
+    </div>
+
+    <div class="mt10">
+        <h2>
+            trimStart</h2>
+        <p>
+            <input id="txtTrimStart" type="text" value="" class="formText" />
+            <input id="btnTrimStart" type="button" class="formButton" value="GO.." />
+            <span>
+            </span>
+        </p>
+        <pre class="descrip">
+        </pre>
+    </div>
+
+    <div class="mt10">
+        <h2>
+            trimEnd</h2>
+        <p>
+            <input id="txtTrimEnd" type="text" value="" class="formText" />
+            <input id="btnTrimEnd" type="button" class="formButton" value="GO.." />
+            <span>
+            </span>
+        </p>
+        <pre class="descrip">
+        </pre>
+    </div>
+
+    <div class="mt10">
+        <h2>
+            getRequestParam  param name is "age"</h2>
+        <p>
+            <input id="txtUrl" type="text" value="http://www.baidu.com/a.aspx?name=sushee&sex=male&age=29" class="formText" />
+            <input id="btnGetRequestParam" type="button" class="formButton" value="GO.." />
+            <span>
+            </span>
+        </p>
+        <pre class="descrip">
+        </pre>
+    </div>
+
+    <div class="mt10">
+        <h2>统计一个字符串中出现次数最多的字符，及其次数</h2>
+        <p>
+            <input id="txtMostFrequent" type="text" value="" class="formText"/>
+            <input id="btnMostFrequent" type="button" class="formButton" value="GO.." />              
+           
+            <span></span>
+        </p>
+        <pre class="descrip">
+        </pre>
+    </div>
+
+    
+
+    <div class="mt10">
+        <h2>
+            格式化js类型的时间(如"\/Date(1371447559479)\/"),format:0-->"yyyy-MM-dd",format:1-->"yyyy-MM-dd HH:mm:ss</h2>
+        <p>
+            <input id="txtDate" type="text" value="" class="formText" />
+            <input id="btnGetJsonDate" type="button" class="formButton" value="GO.." />
+            <span>
+            </span>
+        </p>
+        <pre class="descrip">
+        </pre>
+    </div>
+</body>
+</html>

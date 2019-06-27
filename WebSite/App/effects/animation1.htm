@@ -1,0 +1,398 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Animation1 测试</title>
+    <style type="text/css">
+        .buttons{   
+            border:1px solid #CDCDCD;
+            margin-bottom:10px;
+        }
+        #divTest{
+            border:1px solid #000000;
+            position:relative;
+            z-index:1;            
+            width:98%;
+            height:500px;
+            overflow:hidden;
+        }
+        .box{
+            width:25px; height:25px;            
+            position:absolute;
+            left:0px;top:0px;
+            z-index:100;           
+        }
+    </style>   
+    <script src="../../js/jquery-1.7.2.js" type="text/javascript"></script>
+    <script src="../../js/jsLib.js" type="text/javascript"></script>
+    <script src="../../js/animateLib.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        var tools = {
+            toElement: function (ele) {
+                var aa = null;
+                if (typeof (ele) == 'object') {
+                    aa = ele;
+                }
+                else {
+                    aa = document.getElementById(ele);
+                }
+                return aa;
+            }, 
+            getElementsByClassName: function (parentEl, className, tagName) {
+                parentEl = this.toElement(parentEl);
+                if (!parentEl || !className) {
+                    return null;
+                }
+                var els = cds = [];
+                cds = parentEl.getElementsByTagName(tagName);
+                className = className.toUpperCase();
+                for (var i = 0; i < cds.length; i++) {
+                    var _type = cds[i].nodeType;
+                    if (_type != 3 && _type != 8 && cds[i].className.toUpperCase().indexOf(className)>-1) {
+                        //if(!tagName||cds[i].nodeName.toUpperCase()==tagName.toUpperCase()){
+                        //if(tagName||cds[i].nodeName.toUpperCase()==tagName.toUpperCase()){
+                        els[els.length] = cds[i];
+                        //}
+                    }
+                }
+                return els;
+            },        
+            setStyle: function (el, styleName,value) {
+                el = this.toElement(el);
+                el[styleName]=value;
+            },
+            
+            setOpacity: function (el, val) {
+                el = this.toElement(el);
+                el.style.opacity = '' + val / 100;
+                el.style.filter = 'Alpha(Opacity=' + val + ')';
+            },
+             setClass: function (el, val) {
+                el = this.toElement(el);
+                el.className = val;
+            },
+            addClass: function (el, val) {
+                el = this.toElement(el);
+                if (!val) {
+                    return;
+                }
+                var _cln = el.className.split(' ');
+                for (var i = 0; i != _cln.length; i++) {
+                    if (_cln[i] == val) {
+                        return;
+                    }
+                }
+                if (el.className.length > 0) {
+                    el.className = el.className + ' ' + val;
+                }
+                else {
+                    el.className = val;
+                }
+            },
+            hasClass: function (el, val) {
+                var _bl = false;
+                if ($(el)) {
+                    if (!$(el).className) { return false; }
+                    var _cln = $(el).className.split(' ');
+                    for (var i = 0; i != _cln.length; i++) {
+                        if (_cln[i] == val) {
+                            _bl = true;
+                            break;
+                        }
+                    }
+                }
+                return _bl;
+            },
+            removeClass: function (el, val) {
+                el = this.toElement(el);
+                if (!val) {
+                    return;
+                }
+                var _cln = el.className.split(' ');
+                var _s = '';
+                for (var i = 0; i != _cln.length; i++) {
+                    if (_cln[i] != val) {
+                        _s += _cln[i] + ' ';
+                    }
+                }
+                if (_s == ' ') {
+                    _s = '';
+                }
+                if (_s.length != 0) {
+                    _s = _s.substr(0, _s.length - 1);
+                }
+                el.className = _s;
+
+            },
+            replaceClass: function (el, vala, valb) {
+                el = this.toElement(el);
+                if (!vala || !valb) {
+                    return;
+                }
+
+                var _cln = el.className.split(' ');
+                for (var i = 0; i != _cln.length; i++) {
+                    if (_cln[i] == vala) {
+                        _cln[i] = valb;
+                    }
+                }
+                el.className = _cln.join(' ');
+            },
+            getStyle: function (el, styleName) {
+                el = this.toElement(el);
+                var result = null;
+                if (el.style[styleName]) {
+                    result = el.style[styleName];
+                }
+                else if (el.currentStyle) {
+                    result = el.currentStyle[styleName];
+                }
+                else if (document.defaultView && document.defaultView.getComputedStyle) {
+                    styleName = styleName.replace(/([A-Z])/g, "-$1");
+                    styleName = styleName.toLowerCase();
+                    var s = document.defaultView.getComputedStyle(el, null);
+                    if (s) {
+                        result = s[styleName];
+                    }
+                }
+                return result;
+            },
+            fromStyle: function (el, styleValue, percent) {
+                el = typeof el == "object" ? el : document.getElementById(el);
+                var percent = arguments[3];
+                if (!percent) {
+                    percent = 1;
+                }
+                if (/px/.test(styleValue) && parseInt(styleValue)) {//如果元素尺寸为具体的像素值，则直接转换为数字，并乘以百份比值，并返回该值
+                    return parseInt(parseInt(styleValue) * percent);
+                }
+                else if (/\%/.test(styleValue) && parseInt(styleValue)) {//如果元素宽度值为百分比值
+                    var b = parseInt(styleValue) / 100; //则把该值转换为小数值
+                    if ((percent != 1) && percent) {
+                        b *= percent;
+                    }
+                    el = el.parentNode; //get the parent node
+                    if (el.tagName == "BODY") {
+                        throw new Error("文档结构无尺寸，请使用其他方法获取尺寸.");
+                    }
+                    styleValue = this.getStyle(el,"width");
+                    return arguments.callee(el, styleValue, b);
+                }
+                else if (/auto/.test(styleValue)) {//如果元素宽度为默认值
+                    var b = 1;
+                    if ((percent != 1) && percent) {
+                        b *= percent;
+                    }
+                    el = el.parentNode;
+                    if (el.tagName == "BODY") {
+                        throw new Error("文档结构无尺寸，请使用其他方法获取尺寸.");
+                    }
+                    styleValue = this.getStyle(el, "width");
+                    return arguments.callee(el, styleValue, b);
+                }
+                else {
+                    throw new Error("元素或其父元素的尺寸定义了特殊的单位。");
+                }
+            },
+            setCss: function (el, o) {
+                el = this.toElement(el);
+                var a = {};
+                for (var i in o) {
+                    a[i] = el.style[i];
+                    el.style[i] = o[i];
+                }
+                return a;
+            },
+            resetCss: function (el, o) {
+                el = this.toElement(el);
+                for (var i in o) {
+                    el.style[i] = o[i];
+                }
+            },
+            width: function (el) {
+                el = this.toElement(el);
+                if (this.getStyle(el, "display") != "none") {
+                    return el.offsetWidth || this.fromStyle(el, this.getStyle(el, "width")); //如果元素没有隐藏，则读取它的宽度
+                }
+                var r = this.setCss(el, {//如果元素隐藏，则调用setCss方法显示元素，并备份样式
+                    display: "",
+                    position: "absolute",
+                    visibility: "hidden"
+                });
+                var w = el.offsetWidth || this.fromStyle(el, this.getStyle(el, "width")); //获取元素的宽度
+                this.resetCss(el, r); //恢复元素的隐藏显示
+                return w;//返回元素的宽度
+            },
+            height:function(el){
+               el = this.toElement(el);
+                if (this.getStyle(el, "display") != "none") {
+                    return el.offsetHeight || this.fromStyle(el, this.getStyle(el, "height")); 
+                }
+                var r = this.setCss(el, {
+                    display: "",
+                    position: "absolute",
+                    visibility: "hidden"
+                });
+                var w = el.offsetHeight || this.fromStyle(el, this.getStyle(el, "height")); 
+                this.resetCss(el, r);
+                return w;
+            }
+    };//end tools
+        var nCount = 1;
+        function animate(element,property,endValue,duration) {
+            element = typeof element == "string" ? document.getElementById(element) : element;
+            var beginTime = new Date().getTime();
+            var endTime = beginTime + duration;           
+            var baseValue=endValue-parseInt(tools.getStyle(element,property));
+            element.timerID = setTimeout(function () {
+                var now = new Date().getTime();
+                if (now >= endTime) {
+                    clearTimeout(animate.timerID);
+                    aniFun(element, property, 1, baseValue);
+                    trace.write("共调用 " + nCount + " 次");
+                    nCount = 1;
+                }
+                else {
+                    var portion = (now - beginTime) / duration;
+                    aniFun(element, property, portion, baseValue);
+                    element.timerID = setTimeout(arguments.callee, 25);
+                }
+            }, 25);
+        }
+        var pow = Math.pow,
+        sin = Math.sin,
+        PI = Math.PI,
+        BACK_CONST = 1.70158; 
+        var Easing = {            
+            // 匀速运动 
+            linear: function (t) {
+                return t;
+            },
+            easeIn: function (t) {
+                return t * t;
+            },
+            easeOut: function (t) {
+                return (2 - t) * t;
+            },
+            easeBoth: function (t) {
+                return (t *= 2) < 1 ? .5 * t * t : .5 * (1 - (--t) * (t - 2));
+            },
+            easeInStrong: function (t) {
+                return t * t * t * t;
+            },
+            easeOutStrong: function (t) {
+                return 1 - (--t) * t * t * t;
+            },
+            easeBothStrong: function (t) {
+                return (t *= 2) < 1 ?.5 * t * t * t * t :.5 * (2 - (t -= 2) * t * t * t);
+            },
+            easeOutQuart: function (t) {
+                return -(pow((t - 1), 4) - 1)
+            },
+            easeInOutExpo: function (t) {
+                if (t === 0) return 0;
+                if (t === 1) return 1;
+                if ((t /= 0.5) < 1) return 0.5 * pow(2, 10 * (t - 1));
+                return 0.5 * (-pow(2, -10 * --t) + 2);
+            },
+            easeOutExpo: function (t) {
+                return (t === 1) ? 1 : -pow(2, -10 * t) + 1;
+            },
+            swingFrom: function (t) {
+                return t * t * ((BACK_CONST + 1) * t - BACK_CONST);
+            },
+            swingTo: function (t) {
+                return (t -= 1) * t * ((BACK_CONST + 1) * t + BACK_CONST) + 1;
+            },
+            sinusoidal: function (t) {
+                return (-Math.cos(t * PI) / 2) + 0.5;
+            },
+            flicker: function (t) {
+                var t = t + (Math.random() - 0.5) / 5;
+                return this.sinusoidal(t < 0 ? 0 : t > 1 ? 1 : t);
+            },
+            backIn: function (t) {
+                if (t === 1) t -= .001;
+                return t * t * ((BACK_CONST + 1) * t - BACK_CONST);
+            },
+            backOut: function (t) {
+                return (t -= 1) * t * ((BACK_CONST + 1) * t + BACK_CONST) + 1;
+            },
+            bounce: function (t) {
+                var s = 7.5625, r;
+                if (t < (1 / 2.75)) {
+                    r = s * t * t;
+                }
+                else if (t < (2 / 2.75)) {
+                    r = s * (t -= (1.5 / 2.75)) * t + .75;
+                }
+                else if (t < (2.5 / 2.75)) {
+                    r = s * (t -= (2.25 / 2.75)) * t + .9375;
+                }
+                else {
+                    r = s * (t -= (2.625 / 2.75)) * t + .984375;
+                }
+                return r;
+            }
+        };
+
+
+        function aniFun(element, property, portion, baseValue) {
+
+            var value = Easing.linear(portion);
+            if (baseValue < 0) {
+                element.style[property] = Math.abs(baseValue * value +Math.abs(baseValue)) + "px";
+            }
+            else {
+                element.style[property] = baseValue * value + "px";
+            }
+            nCount++;
+            trace.write(portion);
+            trace.warn(tools.getStyle(element,property));        
+        }
+        JU.domReady(function () {
+
+            trace.enabled = true;
+            var btnAnimate = document.getElementById("btnAnimate");
+            var btnBack = document.getElementById("btnBack");
+            var btnAniLib = document.getElementById("btnAniLib");
+
+            btnAnimate.onclick = function () {
+                animate(box1, "left", 500, 5000);
+            };
+            btnBack.onclick = function () {
+                animate(box1, "left", 0, 500);
+            };
+            btnAniLib.onclick = function () {
+                var oAni = new catfx(box1),
+                    callback = function () {
+                        var left = 500;
+                        if (tools.getStyle("box1", "left") == "0px") {
+                            left = 500;
+                        }
+                        else {
+                            left = 0;
+                        }                        
+                        oAni.animate({ "left": left }, 2000, null, callback);
+                    };
+                oAni.stop();
+                oAni.animate({ "left": 500 }, 2000, null, callback);
+            };
+        });
+    </script>
+</head>
+<body>
+    <div class="buttons">
+        <input type="button" id="btnAnimate" value="Animate" />
+        <input type="button" id="btnBack" value="Back" />
+        <input type="button" id="btnAniLib" value="user aniLib" />
+    </div>
+    <div id="divTest">
+        <div id="box1" class="box" style="background-color:#CCCEEE">
+            
+        </div>
+    </div>
+
+    <script src="../../js/traceTool.js" type="text/javascript"></script>
+</body>
+</html>

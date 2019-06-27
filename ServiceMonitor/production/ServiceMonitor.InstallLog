@@ -1,0 +1,45 @@
+﻿正在安装程序集“E:\Learnings\DemoSolution\ServiceMonitor\production\ServiceMonitor.exe”。
+受影响的参数是:
+   logtoconsole = 
+   logfile = E:\Learnings\DemoSolution\ServiceMonitor\production\ServiceMonitor.InstallLog
+   assemblypath = E:\Learnings\DemoSolution\ServiceMonitor\production\ServiceMonitor.exe
+正在回滚程序集“E:\Learnings\DemoSolution\ServiceMonitor\production\ServiceMonitor.exe”。
+受影响的参数是:
+   logtoconsole = 
+   logfile = E:\Learnings\DemoSolution\ServiceMonitor\production\ServiceMonitor.InstallLog
+   assemblypath = E:\Learnings\DemoSolution\ServiceMonitor\production\ServiceMonitor.exe
+正在安装程序集“E:\Learnings\DemoSolution\ServiceMonitor\production\ServiceMonitor.exe”。
+受影响的参数是:
+   logtoconsole = 
+   logfile = E:\Learnings\DemoSolution\ServiceMonitor\production\ServiceMonitor.InstallLog
+   assemblypath = E:\Learnings\DemoSolution\ServiceMonitor\production\ServiceMonitor.exe
+正在安装服务 ServiceMonitor...
+已成功安装服务 ServiceMonitor。
+正在日志 Application 中创建 EventLog 源 ServiceMonitor...
+正在提交程序集“E:\Learnings\DemoSolution\ServiceMonitor\production\ServiceMonitor.exe”。
+受影响的参数是:
+   logtoconsole = 
+   logfile = E:\Learnings\DemoSolution\ServiceMonitor\production\ServiceMonitor.InstallLog
+   assemblypath = E:\Learnings\DemoSolution\ServiceMonitor\production\ServiceMonitor.exe
+正在卸载程序集“E:\Learnings\DemoSolution\ServiceMonitor\production\ServiceMonitor.exe”。
+受影响的参数是:
+   logtoconsole = 
+   logfile = E:\Learnings\DemoSolution\ServiceMonitor\production\ServiceMonitor.InstallLog
+   assemblypath = E:\Learnings\DemoSolution\ServiceMonitor\production\ServiceMonitor.exe
+正在移除 EventLog 源 ServiceMonitor。
+正在从系统中移除服务 ServiceMonitor...
+已成功地从系统中移除服务 ServiceMonitor。
+尝试停止服务 ServiceMonitor。
+正在安装程序集“E:\Learnings\DemoSolution\ServiceMonitor\production\ServiceMonitor.exe”。
+受影响的参数是:
+   logtoconsole = 
+   logfile = E:\Learnings\DemoSolution\ServiceMonitor\production\ServiceMonitor.InstallLog
+   assemblypath = E:\Learnings\DemoSolution\ServiceMonitor\production\ServiceMonitor.exe
+正在安装服务 ServiceMonitor...
+已成功安装服务 ServiceMonitor。
+正在日志 Application 中创建 EventLog 源 ServiceMonitor...
+正在提交程序集“E:\Learnings\DemoSolution\ServiceMonitor\production\ServiceMonitor.exe”。
+受影响的参数是:
+   logtoconsole = 
+   logfile = E:\Learnings\DemoSolution\ServiceMonitor\production\ServiceMonitor.InstallLog
+   assemblypath = E:\Learnings\DemoSolution\ServiceMonitor\production\ServiceMonitor.exe

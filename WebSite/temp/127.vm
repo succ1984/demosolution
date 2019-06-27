@@ -1,0 +1,95 @@
+﻿#if($FocusFormatType==1)
+<div class="focus widget">
+#else
+<div class="focus focus2 widget">
+#end
+      <h3>$WidgetName</h3>
+        <div class="focusBox">
+#if($flg==1)
+          <ul class="focusPic">
+
+ #foreach( $item in $FocusPic310.Rows)
+#if($item.rowNum==1)
+            <li style="filter: ; zoom: 1;display:  list-item;">
+#else
+<li style="display:none;">
+#end
+#if($item.LinkUrl=="")
+             <a href="javascript:void(0);">
+#else
+<a href="$item.LinkUrl" target="_blank">
+#end
+               <img   width="300" height="225" src="$item.PhotoUrl" alt="$item.PhotoDesc">
+             </a>
+            </li>
+#end
+          </ul>
+          <ul class="focusTxt">
+
+ #foreach( $item1 in $FocusPic310.Rows)
+#if($item1.rowNum==1)
+            <li style="display:  list-item;">
+#else
+<li style="display:none;">
+#end
+          <a href="javascript:void(0);">$item1.PhotoDesc</a></li>
+#end
+          </ul>
+          <ul class="focusNum">
+
+ #foreach( $item2 in $FocusPic310.Rows)
+#if($item2.rowNum==1)
+            <li class="current">
+#else
+#if($FocusFormatTyoe!=1 && $item2.OrderNum==$FocusPic310.Rows.Count )
+<li class="end">
+#else
+<li class="">
+#end
+#end
+#if($FocusFormatType==1)
+$item2.OrderNum
+#else
+<img width="64" height="48" src="$item2.ThumbPhotoUrl">
+#end
+
+</li>
+#end
+          </ul>
+          <div class="focusTxtBg"></div>
+<script type="text/javascript">
+if(typeof(rollableSecond)!="function")
+{ 
+document.write("<script src='http://test1.image.bitauto.com/autositev2/js/AjaxPicRotation.js' type='text/javascript'></" + "script>");
+}
+$(document).ready(function(){
+var PicRotation = new rollableSecond(); 
+PicRotation.Startshow({autoPlay: true, interval: 5000, index: 1} ,$(".w310").find('.focus'));
+});
+</script>
+#else
+<ul class="focusPic">
+<li style="filter: ; zoom: 1;display:  list-item;">
+<a href="javascript:void(0);">
+<img   width="300" height="225" src="/images/300X225.jpg" alt="">
+             </a>
+            </li>
+</ul>
+          <ul class="focusTxt">
+<li style="display:  list-item;">
+<a href="javascript:void(0);"></a></li>
+          </ul>
+          <ul class="focusNum">
+<li class="current">
+#if($FocusFormatType==1)
+1
+#else
+<img width="64" height="48" src="/images/64x48.jpg">
+#end
+</li>
+</ul>
+          <div class="focusTxtBg"></div>
+#end
+        </div>
+
+      </div>

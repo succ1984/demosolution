@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="../../js/jsLib.js" type="text/javascript"></script>
+   <script src="../../js/traceTool.js" type="text/javascript"></script>
+   <script type="text/javascript">
+       window.onload = function () {           
+           trace.enabled = true;
+           trace.write("IE: " + UA.isIE);
+           trace.write("Firefox: " + UA.isFirefox);
+           trace.write("Chrome: " + UA.isChrome);
+           trace.write("Safari: " + UA.isSafari);
+           trace.write("Opera: " + UA.isOpera);
+
+           trace.write("navigator.appName: " + navigator.appName);
+           trace.write("navigator.appCode: " + navigator.appCodeName);
+           trace.write("navigator.appVersion: " + navigator.appVersion);
+           trace.write("navigator.userAgent: " + navigator.userAgent);
+          
+       }
+   </script>
+</head>
+<body>
+
+</body>
+</html>

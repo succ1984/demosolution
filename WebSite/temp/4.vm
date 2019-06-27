@@ -1,0 +1,5 @@
+﻿<div class="photoSlide widget">
+            <h3>图片幻灯</h3>
+            <div class="photoSlideBlc"><img src="else/210X140.png" alt="图片" title="图片" /></div>
+            <span class="more"><a href="#">更多&gt;&gt;</a></span>
+        </div>

@@ -1,0 +1,11 @@
+Logging started at 2014/6/10 13:12:50
+Info: aaaa
+Debug: bbbb
+Error: aaaa
+General: aaaa
+Trace: aaaa
+Warn: aaaa
+Warn: aaaa
+Info: hello, sushee! What are you doing?
+Logging ended at 2014/6/10 13:12:50
+Logging ended at 2014/6/10 13:12:50

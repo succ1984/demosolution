@@ -1,0 +1,21 @@
+﻿<div class="subbrand widget">
+    <h3>$WidgetName</h3>
+#if($flg1==1)
+    <ul>
+    #foreach($pitem in $Cs_MasterBrand.Rows)
+     #foreach( $item in $Cs_Brand.Rows)
+#if($pitem.BrandID == $item.ParentBrandID)
+#set($hrefF="/cardetail/")
+#set($hrefE=".html")
+        <li><a href="$hrefF$item.cs_Id$hrefE">
+            <img src="$PageCommon.ImagesPath($item.cs_photo,1)" alt="$item.cs_ShowName" title="$item.cs_ShowName" /></a>
+            <strong><a href="$hrefF$item.cs_Id$hrefE" title="$item.cs_ShowName">$item.cs_ShowName</a></strong></li>
+   #end
+#end
+     #end 
+    </ul>
+    <span class="more"><a href="/autolist.html">更多&gt;&gt;</a></span>
+#else
+<div class="blc_ept"></div>
+#end 
+</div>

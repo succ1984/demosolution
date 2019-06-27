@@ -1,0 +1,41 @@
+
+-------------------------------------------------------------------------------------
+
+CASE 1,
+
+\Creative.Mobile.EStore\Content\script\source\ready.js
+\Creative.Mobile.EStore\Content\script\source\jquery.mobile-1.0b1.js
+\Creative.Mobile.EStore\Content\script\source\global.js
+\Creative.Mobile.EStore\Content\script\source\product.js
+\Creative.Mobile.EStore\Content\script\source\validator.js
+
+output: \Creative.Mobile.EStore\Content\script\jquery.mobile-1.0b1-min.js
+
+
+------------------------------------------------------------------------------------
+
+CASE 2,
+
+\Creative.Mobile.EStore\Content\script\source\account.js
+\Creative.Mobile.EStore\Content\script\source\address.js
+
+output: \Creative.Mobile.EStore\Content\script\account-min.js
+
+----------------------------------------------------------------------------------------
+
+CASE 3,
+
+\Creative.Mobile.EStore\Content\css\source\style.css
+\Creative.Mobile.EStore\Content\css\source\jquery.mobile.css
+
+output: \Creative.Mobile.EStore\Content\css\style-min.css
+
+-----------------------------------------------------------------------------------------
+
+CASE 4,
+
+\Creative.Mobile.EStore\Content\css\source\account.css
+
+output: \Creative.Mobile.EStore\Content\css\account-min.css
+
+-----------------------------------------------------------------------------------------

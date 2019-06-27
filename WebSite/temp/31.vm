@@ -1,0 +1,13 @@
+﻿<div class="forumHP widget">
+    <h3>$WidgetName</h3>
+#if($flg==1)
+    <ul>
+     #foreach( $item in $AutoSiteBBS.Rows)
+        <li><a target="_blank" href="/bbs/showtopic-${item.tid}.aspx" title="">$item.title</a></li>
+     #end
+    </ul>
+    <span class="more"><a target="_blank" href="/bbs/">更多&gt;&gt;</a></span>
+#else
+<div class="blc_ept"></div>
+#end 
+</div>

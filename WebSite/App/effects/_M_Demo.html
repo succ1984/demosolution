@@ -1,0 +1,980 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>演示</title>
+    <script src="js/jquery-1.4.2.min.js" type="text/javascript"></script>
+    <link href="http://img1.bitauto.com/das/img_app_css/Common.css" rel="stylesheet"
+        type="text/css" />
+    <link href="http://img1.bitauto.com/das/img_app_css/das.css" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        .zxx_list_title
+        {
+            background: #eeeeee;
+            border: 1px solid #cccccc;
+            padding: 1em;
+        }
+        .zxx_list_content
+        {
+            padding: 1em;
+        }
+        #tinybox
+        {
+            position: absolute;
+            display: none;
+            padding: 10px;
+            background: #ffffff url(../image/preload.gif) no-repeat 50% 50%;
+            border: 10px solid #e3e3e3;
+            z-index: 2000;
+        }
+        #tinymask
+        {
+            position: absolute;
+            display: none;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background: #000000;
+            z-index: 1500;
+        }
+        #tinycontent
+        {
+            background: #ffffff;
+            font-size: 1.1em;
+        }
+    </style>
+   <!-- <script type="text/javascript" src="/Js/jquery-1.4.2.min.js"></script>
+    <script type="text/javascript" src="/js/_M1.0.js"></script>-->
+    <script src="../../js/jquery-1.7.2.js" type="text/javascript"></script>
+    <script src="../../js/_M.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(window).load(function ()
+        {
+            $(".code").css("color", "red");
+            $(".explain").css("color", "green");
+            //window.onbeforeunload = _M.IsExit;
+        });
+
+	
+    </script>
+</head>
+<body>
+    <div id="div1">
+        引用<br />
+        <label class="code">
+            &lt;script type="text/javascript" src="/Js/jquery-1.4.2.min.js"&gt; &lt;/script&gt;<br />
+            &lt;script type="text/javascript" src="/Component/ShowMsg/_M1.0.min.js"&gt; &lt;/script&gt;</label><br />
+        <br />
+        注意要引用公用css样式&lt;link href="/Style/Common.css" rel="stylesheet" type="text/css" /&gt;
+    </div>
+    <div class="zxx_main_con">
+        <hr />
+        <div>
+            请输入用户名：<input type="text" id="username" /></div>
+        <div class="zxx_list_title" style="display: block;">
+            <b>错误提示框</b><a class="ml20" href="javascript:_M.ErrMsg('username','用户名未填写');" id="A1">效果预览</a>&nbsp;&nbsp;<a
+                class="ml20" href="javascript:_M.MsgNo('errorMsg_username');" id="A11">去掉效果预览</a>&nbsp;&nbsp;<a
+                    class="ml20" href="javascript:void(0);" onclick="_M.mask(0.01);setTimeout('_M.Close()',3000);"
+                    id="A20">效果预览</a>&nbsp;&nbsp;<a class="ml20" href="javascript:void(0);" onclick="_M.Alert('内容','标题',null,null,1);"
+                        id="A21">效果预览</a></div>
+        <div class="zxx_list_content">
+            <div>
+                用法：onclick="<label class="code">_M.ErrMsg('username','用户名未填写');</label>"<br />
+                onclick="<label class="code">_M.ErrMsg('username','用户名未填写',true);</label>"<br />
+                onclick="<label class="code">_M.ErrMsg(null,'用户名未填写',null,DOM);</label>"
+                <br />
+                onclick="<label class="code">_M.MsgNo('errorMsg_username');</label>"<div class="explain">
+                    //会删除id为errorMsg_username的节点</div>
+                onclick="<label class="code">_M.MsgNo('errorMsg_username',DOM);</label>"<div class="explain">
+                    //会删除后面.check_tips的节点（冯立雷需求）</div>
+            </div>
+            参数说明：<div class="explain">
+                //username是input的id；“用户名未填写”是要显示的错误提示信息并且会定义一个DIVid是errorMsg_开头加自己的id。<br />
+                //第三个参数，如果传入值是after模式，默认不传值是 父节点append模式<br />
+                //第四个单数DOM是一个Dom对象，一旦传入dom对象，则第一个参数和第三个参数失效。<br />
+            </div>
+        </div>
+        <div class="zxx_list_title" style="display: block;">
+            <b>营销建议</b><a class="ml20" href="javascript:_M.Advice('ad', '	您已经有2周没有发布新闻了，建议您保持至少每周一次的新闻更新频率！ 您已经有2周没有发布新闻了，建议您保持至少每周一次的新闻更新频率！您已经有2周没有发布新闻了，建议您保持至少每周一次的新闻更新频率！');"
+                id="A2">效果预览</a></div>
+        <div class="zxx_list_content">
+            <div id="ad">
+            </div>
+            <div>
+                用法：onclick="<label class="code">_M.Advice('ad', ' 您已经有2周没有发……');</label>"
+            </div>
+            参数说明：<div class="explain">
+                //ad是指定的id；“您已经有2周没有发……”是要显示的提示信息。</div>
+        </div>
+        <div class="zxx_list_title" style="display: block;">
+            <b>顶部警示</b><a class="ml20" href="javascript:_M.Alerts('ad1', '	您已经有2周没有发布新闻了，建议您保持至少每周一次的新闻更新频率！ 您已经有2周没有发布新闻了，建议您保持至少每周一次的新闻更新频率！您已经有2周没有发布新闻了，建议您保持至少每周一次的新闻更新频率！');"
+                id="A14">效果预览</a></div>
+        <div class="zxx_list_content">
+            <div id="ad1">
+            </div>
+            <div>
+                用法：onclick="<label class="code">_M.Alerts('ad1', ' 您已经有2周没有发……');</label>"
+            </div>
+            参数说明：<div class="explain">
+                //ad1是指定的id；“您已经有2周没有发……”是要显示的提示信息。</div>
+        </div>
+        <div class="zxx_list_title" style="display: block;">
+            <b>引导小提示</b><a class="ml20" href="javascript:_M.CueMsgSmall('smallAd', '请上传尺寸不小于 950*250 的图片，以保证视觉效果');"
+                id="A15">效果预览</a></div>
+        <div class="zxx_list_content">
+            <div id="smallAd">
+            </div>
+            <div>
+                用法：onclick="<label class="code">_M.CueMsgSmall('smallAd', '请上传尺寸不小于 950*250 的图片，以保证视觉效果');</label>"
+            </div>
+            参数说明：<div class="explain">
+                //smallAd是指定的id；“请上传尺寸不小于……”是要显示的提示信息。</div>
+        </div>
+        <div class="zxx_list_title" style="display: block;">
+            <b>标题提示框</b><a class="ml20" href="javascript:_M.TitMsg('您已将12条新闻成功删除','Div3','5000');"
+                id="A3">效果预览1</a>&nbsp;&nbsp;<a class="ml20" href="javascript:_M.TitMsg('您已将12条新闻成功删除“我能漂浮”');"
+                    id="A4">效果预览2</a></div>
+        <div class="zxx_list_content">
+            <div id="Div3">
+            </div>
+            <div>
+                用法：<br />
+                onclick="<label class="code">_M.TitMsg('您已将12条新闻成功删除','Div3');</label>"<br />
+                onclick="<label class="code">_M.TitMsg('您已将12条新闻成功删除');</label>"
+            </div>
+            参数说明：<div class="explain">
+                //“您已将12条新闻成功删除”是提示内容；“Div3”是要指定id，如果没有这个参数，则是漂浮状态，3秒后自动消失。</div>
+        </div>
+        <div class="zxx_list_title" style="display: block;">
+            <b>校验提示</b><a class="ml20" href="javascript:_M.Check('请更正以下2个错误！','Div4','6000');"
+                id="A5">效果预览</a>&nbsp;&nbsp;<a class="ml20" href="javascript:_M.Check('请更正以下2个错误！“我能漂浮”');"
+                    id="A6">效果预览</a></div>
+        <div class="zxx_list_content">
+            <div id="Div4">
+                <br />
+            </div>
+            <div>
+                用法：<br />
+                onclick="<label class="code">_M.Check('请更正以下2个错误！','Div4');</label>"<br />
+                onclick="<label class="code">_M.Check('请更正以下2个错误！');</label>"
+            </div>
+            参数说明：<div class="explain">
+                //“请更正以下2个错误！”是提示内容；“Div4”是要指定id，如果没有这个参数，则是漂浮状态，3秒后自动消失。</div>
+        </div>
+        <!--0727-->
+        <div class="zxx_list_title" style="display: block;">
+            <b>警告提示</b><a class="ml20" href="javascript:_M.Notice('警告提示！','Div8');" id="A10">效果预览</a>&nbsp;&nbsp;<a
+                class="ml20" href="javascript:_M.Notice('警告提示！“我能漂浮”');" id="A16">效果预览</a></div>
+        <div class="zxx_list_content">
+            <div id="Div8">
+                <br />
+            </div>
+            <div>
+                用法：<br />
+                onclick="<label class="code">_M.Notice('警告提示！','Div8');</label>"<br />
+                onclick="<label class="code">_M.Notice('警告提示！');</label>"
+            </div>
+            参数说明：<div class="explain">
+                //“警告提示！”是提示内容；“Div8”是要指定id，如果没有这个参数，则是漂浮状态，3秒后自动消失。</div>
+        </div>
+        <!--0727End-->
+        <div class="zxx_list_title" style="display: block;">
+            <b>随手帮助</b><a class="ml20" href="javascript:void(0);" onmouseover="_M.Help(this,'你可以为新闻添加相关品牌，在新闻的详情页最下方将会列出相关品牌车型，以加强该品牌车型报价的推广牌车型报价的推广牌车型报价的推广牌车型报价的推广牌车型报价的推广牌车型报价的推广。',0,false,100)"
+                id="A7">效果预览</a>&nbsp;&nbsp;<a class="ml20" href="javascript:void(0);" onmouseover="_M.Help(this,'你可以为新闻添加相关品牌，在新闻的详。',0,false)"
+                    id="A18">效果预览</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a class="ml20" href="javascript:void(0);" onmouseover="_M.Help(this,'你可以为新闻添加相关品牌，在新闻的详。',0,false)"
+                id="A22">右效果预览</a></div>
+        <div class="zxx_list_content">
+            <div>
+                用法： onmouseover="<label class="code">_M.Help(this,'你可以为新闻添加……')</label>"
+                <br />
+                onmouseover="<label class="code">_M.Help(this,'你可以为新闻添加……',100)</label>"
+                <br />
+                onmouseover="<label class="code">_M.HelpRight(this,'你可以为新闻添加……',100)</label>"
+            </div>
+            参数说明：<div class="explain">
+                //“this”是展示的节点；“你可以为新闻添加……”是内容。<br />
+                //100 右移100个像素，也可以赋个负值。
+            </div>
+        </div>
+        <div class="zxx_list_title" style="display: block;">
+            <b>带倒计时提示框</b><a class="ml20" href="javascript:void(0);" onmouseover="_M.ShowTimeMsg(this,'请先选中要删除的新闻!',3,0,false);"
+                id="A8">效果预览</a>&nbsp;&nbsp;<a class="ml20" href="javascript:void(0);" onmouseover="_M.ShowTimeMsg(this,'请先选中要删除的新闻!',3,0,false);"
+                    id="A19">效果预览</a></div>
+        <div class="zxx_list_content">
+            <div>
+                用法： onmouseover="<label class="code">_M.ShowTimeMsg(this,'请先选中要删除的新闻!',3);</label>"
+                <br />
+                onmouseover="<label class="code">_M.ShowTimeMsg(this,'你可以为新闻添加……',3,100)</label>"
+            </div>
+            参数说明：<div class="explain">
+                //“this”是展示的节点；“请先选中要删除的新闻”是内容；3是3秒的意思。<br />
+                //100 右移100个像素，也可以赋个负值。</div>
+        </div>
+        <div class="zxx_list_title" style="display: block;">
+            <b>弹框效果1（有隐藏DIV）</b><a class="ml20" href="javascript:_M.Show('aa1','bb1');" id="A9">效果预览</a>&nbsp;&nbsp;<a
+                class="ml20" href="javascript:_M.Show('aa1');" id="A17">效果预览</a><br />
+                <select style="width:600px;">
+                   <option>请选择城市...</option>
+                   <optgroup label="查看是否覆盖了下拉框，IE6下">
+                        <option>北京</option>
+                        <option>上海</option>
+                        <option>上海</option>
+                        <option>北京</option>
+                        <option>上海</option>
+                        <option>上海</option>
+                   </optgroup>
+                   <option>北京</option>
+                   <option>上海</option>
+                   <option>上海</option>
+                   <option>北京</option>
+                   <option>上海</option>
+                   <option>上海</option>
+                   <option>北京</option>
+                   <option>上海</option>
+                   <option>上海</option>
+                   <option>北京</option>
+                   <option>上海</option>
+                   <option>上海</option>
+                   <option>北京</option>
+                   <option>上海</option>
+                   <option>上海</option>
+                   <option>北京</option>
+                   <option>上海</option>
+                   <option>上海</option>
+                   <option>北京</option>
+                   <option>上海</option>
+                   <option>上海</option>
+                </select>
+        </div>
+        <div class="zxx_list_content">
+            <div>
+                用法： onclick="<label class="code">_M.Show('HiddenDIV','TitleDIV');</label>"
+                <br />
+                onclick="<label class="code">_M.Show('HiddenDIV');</label>"
+                <br />
+            </div>
+            参数说明：<div class="explain">
+                //注意：此方法必须在当前页面添加隐藏DIV，里面是要弹出的部分。<br />
+                //HiddenDIV 是隐藏了的div，TitleDIV 是设置哪里要进行拖动，一般为标题处的div的id。
+                <br />
+                &lt;div class="alert" id="HiddenDIV" style="display: none"&gt;<br />
+                &lt;div class="alert_blc"&gt;<br />
+                &lt;div class="alert_title" id="TitleDIV"&gt;<br />
+                &lt;h3&gt;<br />
+                创建新分组&lt;/h3&gt;<br />
+                &lt;/div&gt;<br />
+                &lt;div class="alert_info"&gt;<br />
+                你可以在这里输出信息&lt;br /&gt;<br />
+                &lt;input type="text" value="abc" /&gt;<br />
+                &lt;/div&gt;<br />
+                &lt;div class="btns"&gt;<br />
+                &lt;a href="#" onclick="return false;" class="submit"&gt;<br />
+                &lt;input type="submit" value="确定" onclick="$('#HiddenDIV').css('display','none');_M.Close();alert(123);"
+                /&gt;&lt;/a&gt;<br />
+                &lt;a href="#" onclick="return false;" class="cancel"&gt;<br />
+                &lt;input type="button" value="取消" onclick="$('#HiddenDIV').css('display','none');_M.Close();"&gt;&lt;/a&gt;<br />
+                &lt;/div&gt;<br />
+                &lt;span class="more"&gt;&lt;a class="alert_close" href="javascript:void(0);" onclick="$('#HiddenDIV').css('display','none');_M.Close();"<br />
+                title="关闭"&gt;关闭&lt;/a&gt;&lt;/span&gt;<br />
+                &lt;/div&gt;<br />
+                &lt;/div&gt;<br />
+            </div>
+        </div>
+        <div class="zxx_list_title" style="display: block;">
+            <b>弹框效果2（有确认取消按钮）</b><a class="ml20" href="javascript:_M.Confirm('创建新分组','你可以在这里输出信息','alert(123)');"
+                id="A13">效果预览</a></div>
+        <div class="zxx_list_content">
+            <div>
+                用法： onclick="<label class="code">_M.Confirm('创建新分组','你可以在这里输出信息','alert(123)');</label>"
+            </div>
+            参数说明：<div class="explain">
+                //注意：此方法就相当于JS的Confirm，但是有区别：没有返回值；<br />
+                //“创建新分组”为标题；“你可以在这里输出信息”是内容；“alert(123)”是用户点击确定后要执行的JS。</div>
+        </div>
+        <div class="zxx_list_title" style="display: block;">
+            <b>Iframe效果</b><a class="ml20" href="javascript:_M.Include('t1.html','测试标题',1000,450);"
+                id="A12">效果预览</a></div>
+        <div class="zxx_list_content">
+            <div>
+                用法： onclick="<label class="code">_M.Include('t1.html','测试标题',1000,450);</label>"<br />
+                回调方法：<label class="code">parent._M.CallBack('_M.CloseIframe()');</label>
+            </div>
+            参数说明：<div class="explain">
+                //注意：t1.html 是iframe地址，“测试标题”标题，1000宽，450高。</div>
+        </div>
+        <div class="zxx_list_title" style="display: block;">
+            <b>确认效果</b><a class="ml20" onclick="_M.Alert('没有设置标题的操作成功！');" href="javascript:void(0);">确定1</a>&nbsp;&nbsp;<a
+                class="ml20" onclick="_M.Alert('自定义设置了标题的操作成功！','用户提示');" href="javascript:void(0);">确定2</a>&nbsp;&nbsp;<a
+                    class="ml20" onclick="_M.Alert('点击按钮会跳转的操作成功！','','http://www.baidu.com');" href="javascript:void(0);">确定3</a>
+            <a class="ml20" onclick="_M.Alert2('三个按钮的！','支付','已完成支付','支付遇到问题','返回重新选择银行','http://www.baidu.com','http://www.baidu.com','http://www.baidu.com');"
+                href="javascript:void(0);">确定4</a>
+        </div>
+        <div class="zxx_list_content">
+            <div>
+                用法： &lt;a onclick="<label class="code">_M.Alert('没有设置标题的操作成功！');</label>" href="javascript:void(0);
+                &gt;确定1&lt;/a&gt;<br />
+                &lt;a onclick="<label class="code">_M.Alert('自定义设置了标题的操作成功！','用户提示');</label>" href="javascript:void(0);"&gt;确定2&lt;/a&gt;
+                <br />
+                &lt;a onclick="<label class="code">_M.Alert('点击按钮会跳转的操作成功！','','http://www.baidu.com');</label>"
+                href="javascript:void(0); &gt;确定3&lt;/a&gt;
+                <br />
+                &lt;a onclick="<label class="code">_M.Alert2('点击按钮会跳转的操作成功！','','http://www.baidu.com');</label>"
+                href="javascript:void(0); &gt;确定4&lt;/a&gt;
+            </div>
+            参数说明：<div class="explain">
+                //注意：此方法就相当于JS的Alert；<br />
+                //“操作成功！”是提示信息；“用户提示”是标题，如果不传此参数则是默认标题。</div>
+        </div>
+        <div class="zxx_list_title" style="display: block;">
+            <b>删除确认效果</b><a class="ml20" onclick="return _M.ConfirmDel(this,'45645646');" href="javascript:alert('注意Href');">删除</a>&nbsp;&nbsp;<a
+                class="ml20" onclick="return _M.ConfirmDel(this,'45645646');" href="http://www.baidu.com">删除2</a>&nbsp;&nbsp;<a
+                    class="ml20" onclick="return _M.ConfirmDel(this,'内容带双引号','小标题','大标题');" href="javascript:alert(123);">删除3</a>&nbsp;&nbsp;<a
+                        class="ml20" onclick="return _M.ConfirmDel(this,'内容无双引号','小标题','大标题',true);"
+                        href="javascript:alert(123);">删除4</a></div>
+        <div class="zxx_list_content">
+            <div>
+                用法： &lt;a onclick="<label class="code">return _M.ConfirmDel(this,'45645646');</label>"
+                href="<label class="code">javascript:alert('注意Href');</label>"&gt;删除1&lt;/a&gt;<br />
+                &lt;a onclick="<label class="code">return _M.ConfirmDel(this,'45645646');</label>"
+                href="<label class="code">http://www.baidu.com</label>"&gt;删除2&lt;/a&gt;<br />
+                onclick="<label class="code">return _M.ConfirmDel(this,'内容','小标题','大标题');</label>"
+                href="javascript:alert(123);"
+            </div>
+            参数说明：<div class="explain">
+                //注意：此方法是针对单个删除要进行的提示；<br />
+                //“this”是展示的a标签；“45645646”是删除的 标题（这里可以自己取下当前节点的title）；href的内容是要执行的删除的URL。<br />
+                //return _M.ConfirmDel(this,'内容','小标题','大标题',true);最后一个参数的作用是使内容不带双引号</div>
+        </div>
+        <div class="zxx_list_title" style="display: block;">
+            <b>批量删除确认效果</b><a class="ml20" href="javascript:_M.ConfirmDels('大庆勤华双龙汽车2月优惠大行动',2,'alert(\'456\')');">删除</a>&nbsp;&nbsp;<a
+                class="ml20" href="javascript:_M.ConfirmDels('大庆勤华双龙汽车2月优惠大行动等等等等',-1,'alert(\'456\')','小标题','大标题');">删除</a></div>
+        <div class="zxx_list_content">
+            <div>
+                用法： &lt;a onclick="<label class="code">_M.ConfirmDels('大庆勤华双龙汽车2月优惠大行动',2,'alert(\'456\')');</label>"
+                href="javascript:void(0);"&gt;删除&lt;/a&gt;
+            </div>
+            参数说明：<div class="explain">
+                //注意：此方法是针对批量删除要进行的提示；<br />
+                //“大庆勤华双龙汽车……”是删除数据的其中一条title；“2”是删除的条数；alert(\'456\')是用户选择“是”后要执行的方法。<br />
+                //_M.ConfirmDels('大庆勤华双龙汽车2月优惠大行动',-1,'alert(\'456\')','小标题','大标题');当数量传-1的时候直接显示内容和小标题，大标题</div>
+        </div>
+        <div class="zxx_list_title" style="display: block;">
+            <b>加载效果</b><a class="ml20" href="javascript:_M.Load('t_load');">加载中</a>&nbsp;&nbsp;<a
+                class="ml20" href="javascript:_M.Load();">加载中</a></div>
+        <div class="zxx_list_content">
+            <div id="t_load">
+            </div>
+            <div>
+                用法： &lt;a onclick="<label class="code">_M.Load('t_load');</label>" href="javascript:void(0);"&gt;加载中&lt;/a&gt;<br />
+                &lt;a onclick="<label class="code">_M.Load();</label>" href="javascript:void(0);"&gt;加载中&lt;/a&gt;
+            </div>
+            参数说明：<div class="explain">
+                //“t_load”是要加载的ID；如果不传参数，则是全屏加载。</div>
+        </div>
+        <div class="zxx_list_title" style="display: block;">
+            <b>错误提示效果</b><a class="ml20" onclick="_M.ErrorMsg('Div5','未选择图片');" href="javascript:void(0);">效果演示</a>&nbsp;&nbsp;<a
+                class="ml20" href="javascript:_M.Show('Temp2','Temp4');">弹出层中效果演示</a></div>
+        <div class="zxx_list_content">
+            <div id="Div5">
+            </div>
+            <div>
+                用法： &lt;a onclick="<label class="code">_M.ErrorMsg('Div5','未选择图片');</label>" href="javascript:void(0);"&gt;效果演示&lt;/a&gt;
+            </div>
+            参数说明：<div class="explain">
+                //“Div5”是要在指定的ID上显示；“未选择图片”提示内容。<br />
+                //弹出层中要展示错误提示，方法如下：<br />
+                //在弹出层中隐藏的DIV里 class="alert_blc"的id命名，如Temp3，在需要的时候执行 _M.ErrorMsg(null,'您未选择图片呢','Temp3')；<br />
+                //在弹出层中展示“加载中……” 则是需要执行_M.Load(null,'Temp3')<br />
+                //加载中还有一种用法在最后又个样例_M.Load('abc','test5566')
+            </div>
+        </div>
+        <div class="zxx_list_title" style="display: block;">
+            <b>编辑效果</b><a class="ml20" href="javascript:void(0);" onclick="_M.EditMsg(this,'EditDiv',0,0,false);">效果演示</a>
+            &nbsp;&nbsp;<a class="ml20" href="javascript:void(0);" onclick="_M.EditMsg(this,'EditDiv2',0,0,false);">效果演示</a></div>
+        &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+        &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+        &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+        &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+        &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+        &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+        &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+        &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+        &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; <a
+            class="ml20" href="javascript:void(0);" onclick="_M.EditMsg(this,'EditDiv',0,0,false);">
+            效果演示</a>
+        <div class="zxx_list_content">
+            <div id="Div6">
+            </div>
+            <div id="Div7">
+            </div>
+            <div>
+                用法： &lt;a onclick="<label class="code">_M.EditMsg(this,'EditDiv');</label>" href="javascript:void(0);"&gt;效果演示&lt;/a&gt;<br />
+                &lt;a onclick="<label class="code">_M.EditMsg(this,'EditDiv2',100,50);</label>"
+                href="javascript:void(0);"&gt;效果演示&lt;/a&gt;
+            </div>
+            参数说明：<div class="explain">
+                //this是指定当前节点；“EditDiv”是隐藏的DIV。<br />
+                //100为x值，50为y值，可以自己微调</div>
+        </div>
+        <div class="zxx_list_title" style="display: block;">
+            <b>退出前询问效果</b><input type="button" value="绑定事件" id="btnBind" onclick="_M.BindBeforClose();" />
+            <input type="button" value="删除绑定事件" id="btnUnBind" onclick="_M.CancelBeforClose();" /></div>
+        <div class="zxx_list_content">
+            <div>
+                用法： 在页面中加载<label class="code">$(window).load(function() {window.onbeforeunload = _M.IsExit;});</label>
+                ，如果表单中有变化，设置NeedLeaveAsk=false 是正常离开，不弹出询问。NeedLeaveAsk=true 是要弹出询问框。
+            </div>
+            参数说明：<div class="explain">
+                //无</div>
+        </div>
+    </div>
+    <p>
+        <select name="select1">
+            <option>不要挡住我，不要挡住我</option>
+            <option>不要挡住我，不要挡住我</option>
+            <option>不要挡住我，不要挡住我</option>
+        </select></p>
+    <div id="div2">
+        <hr />
+    </div>
+    <div class="alert" id="aa1" style="display: none">
+        <div class="alert_blc">
+            <div class="alert_title" id="bb1">
+                <h3>
+                    创建新分组</h3>
+            </div>
+            <div class="alert_info">
+                你可以在这里输出信息<br />
+                <input type="text" value="abc" />
+            </div>
+            <div class="btns">
+                <a href="#" onclick="return false;" class="submit">
+                    <input type="submit" value="确定" onclick="$('#aa1').css('display','none');_M.Close();alert(123);" /></a>
+                <a href="#" onclick="return false;" class="cancel">
+                    <input type="button" value="取消" onclick="$('#aa1').css('display','none');_M.Close();"></a>
+            </div>
+            <span class="more"><a class="alert_close" href="javascript:void(0);" onclick="$('#aa1').css('display','none');_M.Close();"
+                title="关闭">关闭</a></span>
+        </div>
+    </div>
+    <!-- <div  class="float_tips" ><p class="float_tips_eidt">
+    <div >
+        <label>
+            出价：</label><input type="text" class="txt" />
+        元 <span class="btns"><a href="#" class="btn_gen" onclick="alert('123');return false;">
+            <input type="submit" value="确定" /></a><a href="#" class="btn_gen" onclick="$('#EditDiv').css('display','none');return false;"><input
+                type="submit" value="取消" /></a></span>
+    </div>
+    </p><b></b></div>-->
+    <div class="float_tips" id="EditDiv" style="display: none">
+        <p class="float_tips_eidt">
+            <label>
+                出价：</label><input type="text" class="txt" />
+            元 <span class="btns"><a href="#" class="btn_gen" onclick="alert('123');return false;">
+                <input type="submit" value="确定" onclick="$('#EditDiv').css('display','none');return false;" /></a><a
+                    href="#" class="btn_gen" onclick="$('#EditDiv').css('display','none');return false;"><input
+                        type="submit" value="取消" /></a></span>
+        </p>
+        <b></b>
+    </div>
+    <div class="float_tips" id="EditDiv2" style="display: none">
+        <p class="float_tips_eidt">
+            <label>
+                轮转方式：</label><input type="radio" class="inputcr" checked="checked">原厂
+            <input type="radio" class="inputcr">非原厂 <span class="btns"><a href="#" class="btn_gen"
+                onclick="return false;">
+                <input type="submit" value="确定" onclick="$('#EditDiv2').css('display','none');return false;" /></a><a
+                    href="#" class="btn_gen" onclick="return false;"><input type="submit" value="取消"
+                        onclick="$('#EditDiv2').css('display','none');return false;" /></a></span>
+        </p>
+        <b></b>
+    </div>
+    <!--<div  class="float_tips" ><p class="float_tips_eidt">
+    <div>
+        <label>
+            轮转方式：</label><input type="radio" class="inputcr" checked="checked">原厂
+        <input type="radio" class="inputcr">非原厂 <span class="btns"><a href="#" class="btn_gen"
+            onclick="alert('123');return false;">
+            <input type="submit" value="确定" /></a><a href="#" class="btn_gen"><input
+                type="submit" value="取消" /></a></span>
+    </div>
+    </p><b></b></div>-->
+    <div class="alert w790" id="Temp2" style="display: none">
+        <div class="alert_blc" id="Temp3">
+            <div class="alert_title" id="Temp4">
+                <h3>
+                    选择图片</h3>
+            </div>
+            <div class="alert_info">
+                <div class="alert_form ">
+                    <ul>
+                        <li><b>选择品牌图片：</b><div>
+                            <select name="" id="">
+                                <option value="">奥迪A6L</option>
+                            </select></div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="hl_tabs">
+                    <ul>
+                        <li class="current"><a href="#">外观</a></li>
+                        <li><a href="#">内饰</a></li>
+                        <li><a href="#">内部空间</a></li>
+                        <li><a href="#">行驶</a></li>
+                        <li><a href="#">创意图</a></li>
+                        <li><a href="#">图说</a></li>
+                        <li><a href="#">其他</a></li>
+                    </ul>
+                </div>
+                <div class="alert_imgs">
+                    <ul>
+                        <li>
+                            <img src="http://image.bitautoimg.com/bitauto//2010/04/155529655_550.jpg" width="120"
+                                height="80" alt="" /></li>
+                        <li>
+                            <img src="http://image.bitautoimg.com/bitauto//2010/04/155529655_550.jpg" width="120"
+                                height="80" alt="" /></li>
+                        <li>
+                            <img src="http://image.bitautoimg.com/bitauto//2010/04/155529655_550.jpg" width="120"
+                                height="80" alt="" /></li>
+                        <li>
+                            <img src="http://image.bitautoimg.com/bitauto//2010/04/155529655_550.jpg" width="120"
+                                height="80" alt="" /></li>
+                        <li class="current">
+                            <img src="http://image.bitautoimg.com/bitauto//2010/04/155529655_550.jpg" width="120"
+                                height="80" alt="" /></li>
+                        <li>
+                            <img src="http://image.bitautoimg.com/bitauto//2010/04/155529655_550.jpg" width="120"
+                                height="80" alt="" /></li>
+                        <li>
+                            <img src="http://image.bitautoimg.com/bitauto//2010/04/155529655_550.jpg" width="120"
+                                height="80" alt="" /></li>
+                        <li>
+                            <img src="http://image.bitautoimg.com/bitauto//2010/04/155529655_550.jpg" width="120"
+                                height="80" alt="" /></li>
+                        <li>
+                            <img src="http://image.bitautoimg.com/bitauto//2010/04/155529655_550.jpg" width="120"
+                                height="80" alt="" /></li>
+                        <li>
+                            <img src="http://image.bitautoimg.com/bitauto//2010/04/155529655_550.jpg" width="120"
+                                height="80" alt="" /></li>
+                    </ul>
+                </div>
+                <div class=" pages">
+                    <div>
+                        <span class="preview_off">&lt;&lt;上一页</span><a class="linknow">1</a> <a href="/huizong/20100705/1605177683-1.html">
+                            2</a> <a href="/huizong/20100705/1605177683-2.html">3</a> <a href="/huizong/20100705/1605177683-3.html">
+                                4</a> <a href="/huizong/20100705/1605177683-4.html">5</a> <a href="/huizong/20100705/1605177683-5.html">
+                                    6</a> <a href="/huizong/20100705/1605177683-6.html">7</a> <a href="/huizong/20100705/1605177683-7.html">
+                                        8</a> <a href="/huizong/20100705/1605177683-8.html">9</a> <a href="/huizong/20100705/1605177683-9.html">
+                                            10</a> <a href="/huizong/20100705/1605177683-1.html">下一页&gt;&gt;</a></div>
+                </div>
+            </div>
+            <div class="btns">
+                <a href="#" onclick="return false;" class="submit">
+                    <input type="submit" value="加载效果" onclick="_M.Load(null,'Temp3')" /></a> <a href="#"
+                        onclick="return false;" class="cancel">
+                        <input type="button" value="错误效果" onclick="_M.ErrorMsg(null,'您未选择图片呢','Temp3')" /></a>
+            </div>
+            <span class="more"><a class="alert_close" href="javascript:$('#Temp2').css('display','none');_M.Close();"
+                title="关闭">关闭</a></span>
+            <!--<div class="float_tips" style="position:absolute;top:160px;left:270px">
+                    <p><em><i class="warning"></i>未选择图片</em></p><b></b>
+                    <a href="#" onclick="return false;" class="btn_close">关闭</a>
+                </div>
+                
+                <div class="float_tips" style="position:absolute;top:260px;left:270px">
+                    <p><em class="loading"><i></i>正在加载....</em></p><b></b>
+                </div>-->
+        </div>
+    </div>
+    <div class="alert w790" id="Temp2" style="display: none">
+        <div class="alert_blc" id="Temp3">
+            <div class="alert_title" id="Temp4">
+                <h3>
+                    选择图片</h3>
+            </div>
+            <div class="alert_info">
+                <div class="alert_form ">
+                    <ul>
+                        <li><b>选择品牌图片：</b><div>
+                            <select name="" id="">
+                                <option value="">奥迪A6L</option>
+                            </select></div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="hl_tabs">
+                    <ul>
+                        <li class="current"><a href="#">外观</a></li>
+                        <li><a href="#">内饰</a></li>
+                        <li><a href="#">内部空间</a></li>
+                        <li><a href="#">行驶</a></li>
+                        <li><a href="#">创意图</a></li>
+                        <li><a href="#">图说</a></li>
+                        <li><a href="#">其他</a></li>
+                    </ul>
+                </div>
+                <div class="alert_imgs">
+                    <ul>
+                        <li>
+                            <img src="http://image.bitautoimg.com/bitauto//2010/04/155529655_550.jpg" width="120"
+                                height="80" alt="" /></li>
+                        <li>
+                            <img src="http://image.bitautoimg.com/bitauto//2010/04/155529655_550.jpg" width="120"
+                                height="80" alt="" /></li>
+                        <li>
+                            <img src="http://image.bitautoimg.com/bitauto//2010/04/155529655_550.jpg" width="120"
+                                height="80" alt="" /></li>
+                        <li>
+                            <img src="http://image.bitautoimg.com/bitauto//2010/04/155529655_550.jpg" width="120"
+                                height="80" alt="" /></li>
+                        <li class="current">
+                            <img src="http://image.bitautoimg.com/bitauto//2010/04/155529655_550.jpg" width="120"
+                                height="80" alt="" /></li>
+                        <li>
+                            <img src="http://image.bitautoimg.com/bitauto//2010/04/155529655_550.jpg" width="120"
+                                height="80" alt="" /></li>
+                        <li>
+                            <img src="http://image.bitautoimg.com/bitauto//2010/04/155529655_550.jpg" width="120"
+                                height="80" alt="" /></li>
+                        <li>
+                            <img src="http://image.bitautoimg.com/bitauto//2010/04/155529655_550.jpg" width="120"
+                                height="80" alt="" /></li>
+                        <li>
+                            <img src="http://image.bitautoimg.com/bitauto//2010/04/155529655_550.jpg" width="120"
+                                height="80" alt="" /></li>
+                        <li>
+                            <img src="http://image.bitautoimg.com/bitauto//2010/04/155529655_550.jpg" width="120"
+                                height="80" alt="" /></li>
+                    </ul>
+                </div>
+                <div class=" pages">
+                    <div>
+                        <span class="preview_off">&lt;&lt;上一页</span><a class="linknow">1</a> <a href="/huizong/20100705/1605177683-1.html">
+                            2</a> <a href="/huizong/20100705/1605177683-2.html">3</a> <a href="/huizong/20100705/1605177683-3.html">
+                                4</a> <a href="/huizong/20100705/1605177683-4.html">5</a> <a href="/huizong/20100705/1605177683-5.html">
+                                    6</a> <a href="/huizong/20100705/1605177683-6.html">7</a> <a href="/huizong/20100705/1605177683-7.html">
+                                        8</a> <a href="/huizong/20100705/1605177683-8.html">9</a> <a href="/huizong/20100705/1605177683-9.html">
+                                            10</a> <a href="/huizong/20100705/1605177683-1.html">下一页&gt;&gt;</a></div>
+                </div>
+            </div>
+            <div class="btns">
+                <a href="#" onclick="return false;" class="submit">
+                    <input type="submit" value="加载效果" onclick="_M.Load(null,'Temp3')" /></a> <a href="#"
+                        onclick="return false;" class="cancel">
+                        <input type="button" value="错误效果" onclick="_M.ErrorMsg(null,'您未选择图片呢','Temp3')" /></a>
+            </div>
+            <span class="more"><a class="alert_close" href="javascript:$('#Temp2').css('display','none');_M.Close();"
+                title="关闭">关闭</a></span>
+            <!--<div class="float_tips" style="position:absolute;top:160px;left:270px">
+                    <p><em><i class="warning"></i>未选择图片</em></p><b></b>
+                    <a href="#" onclick="return false;" class="btn_close">关闭</a>
+                </div>
+                
+                <div class="float_tips" style="position:absolute;top:260px;left:270px">
+                    <p><em class="loading"><i></i>正在加载....</em></p><b></b>
+                </div>-->
+        </div>
+    </div>
+    <div class="zxx_list_title" style="display: block;">
+        <b>加载效果演示</b></div>
+    <div class="main">
+        <div class="main_title">
+            <h3>
+                样例</h3>
+        </div>
+        <div class="das_table" id="test5566">
+            <table width="100%" cellspacing="0" cellpadding="0" border="0">
+                <colgroup>
+                    <col class="radio">
+                    <col style="width: 68px;">
+                    <col>
+                    <col style="width: 55px;">
+                    <col style="width: 55px;">
+                    <col style="width: 55px;">
+                    <col class="time">
+                    <col style="width: 55px;">
+                    <col style="width: 55px;">
+                    <col style="width: 160px;">
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th>
+                            <input type="checkbox" value="" name="radio">
+                        </th>
+                        <th>
+                            编号
+                        </th>
+                        <th>
+                            商品名称
+                        </th>
+                        <th>
+                            类别
+                        </th>
+                        <th>
+                            售价
+                        </th>
+                        <th>
+                            状态
+                        </th>
+                        <th>
+                            发布时间
+                        </th>
+                        <th>
+                            <a class="up" href="javascript:_M.Load('abc','test5566','',false)">加载效果<i></i></a>
+                        </th>
+                        <th class="t_r">
+                            <a class="down" href="javascript:_M.Load('abc','test5566','',false)">加载效果<i></i></a>
+                        </th>
+                        <th>
+                            操作
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="selected">
+                        <td>
+                            <input type="checkbox" checked="checked" value="" name="radio">
+                        </td>
+                        <td>
+                            b123
+                        </td>
+                        <td>
+                            <a href="#">新闻标题新闻标题新闻标题新闻标题新闻标题</a>
+                        </td>
+                        <td>
+                            某物
+                        </td>
+                        <td>
+                            9.0元
+                        </td>
+                        <td>
+                            <a href="">出售中</a>
+                        </td>
+                        <td>
+                            2010-07-04
+                        </td>
+                        <td>
+                            111
+                        </td>
+                        <td class="t_r">
+                            999
+                        </td>
+                        <td>
+                            <a href="#">预览</a> <a href="#">修改</a> <a href="#">删除</a> <a href="#">取消推送</a>
+                        </td>
+                    </tr>
+                    <tr class="selected">
+                        <td>
+                            <input type="checkbox" checked="checked" value="" name="radio">
+                        </td>
+                        <td>
+                            b123
+                        </td>
+                        <td>
+                            <a href="#">新闻标题新闻标题新闻标题新闻标题新闻标题</a>
+                        </td>
+                        <td>
+                            某物
+                        </td>
+                        <td>
+                            9.0元
+                        </td>
+                        <td>
+                            <a href="">出售中</a>
+                        </td>
+                        <td>
+                            2010-07-04
+                        </td>
+                        <td>
+                            111
+                        </td>
+                        <td class="t_r">
+                            999
+                        </td>
+                        <td>
+                            <a href="#">预览</a> <a href="#">修改</a> <a href="#">删除</a> <a href="#">取消推送</a>
+                        </td>
+                    </tr>
+                    <tr class="bg">
+                        <td>
+                            <input type="checkbox" checked="checked" value="" name="radio">
+                        </td>
+                        <td>
+                            b123
+                        </td>
+                        <td>
+                            <a href="#">新闻标题新闻标题新闻标题新闻标题新闻标题</a>
+                        </td>
+                        <td>
+                            某物
+                        </td>
+                        <td>
+                            9.0元
+                        </td>
+                        <td>
+                            <a href="">出售中</a>
+                        </td>
+                        <td>
+                            2010-07-04
+                        </td>
+                        <td>
+                            111
+                        </td>
+                        <td class="t_r">
+                            999
+                        </td>
+                        <td>
+                            <a href="#">预览</a> <a href="#">修改</a> <a href="#">删除</a> <a href="#">取消推送</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="checkbox" checked="checked" value="" name="radio">
+                        </td>
+                        <td>
+                            b123
+                        </td>
+                        <td>
+                            <a href="#">新闻标题新闻标题新闻标题新闻标题新闻标题</a>
+                        </td>
+                        <td>
+                            某物
+                        </td>
+                        <td>
+                            9.0元
+                        </td>
+                        <td>
+                            <a href="">出售中</a>
+                        </td>
+                        <td>
+                            2010-07-04
+                        </td>
+                        <td>
+                            111
+                        </td>
+                        <td class="t_r">
+                            999
+                        </td>
+                        <td>
+                            <a href="#">预览</a> <a href="#">修改</a> <a href="#">删除</a> <a href="#">取消推送</a>
+                        </td>
+                    </tr>
+                    <tr class="hover">
+                        <td>
+                            <input type="checkbox" checked="checked" value="" name="radio">
+                        </td>
+                        <td>
+                            b123
+                        </td>
+                        <td>
+                            <a href="#">新闻标题新闻标题新闻标题新闻标题新闻标题</a>
+                        </td>
+                        <td>
+                            某物
+                        </td>
+                        <td>
+                            9.0元
+                        </td>
+                        <td>
+                            <a href="">出售中</a>
+                        </td>
+                        <td>
+                            2010-07-04
+                        </td>
+                        <td>
+                            111
+                        </td>
+                        <td class="t_r">
+                            999
+                        </td>
+                        <td>
+                            <a href="#">预览</a> <a href="#">修改</a> <a href="#">删除</a> <a href="#">取消推送</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="checkbox" checked="checked" value="" name="radio">
+                        </td>
+                        <td>
+                            b123
+                        </td>
+                        <td>
+                            <a href="#">新闻标题新闻标题新闻标题新闻标题新闻标题</a>
+                        </td>
+                        <td>
+                            某物
+                        </td>
+                        <td>
+                            9.0元
+                        </td>
+                        <td>
+                            <a href="">出售中</a>
+                        </td>
+                        <td>
+                            2010-07-04
+                        </td>
+                        <td>
+                            111
+                        </td>
+                        <td class="t_r">
+                            999
+                        </td>
+                        <td>
+                            <a href="#">预览</a> <a href="#">修改</a> <a href="#">删除</a> <a href="#">取消推送</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="checkbox" checked="checked" value="" name="radio">
+                        </td>
+                        <td>
+                            b123
+                        </td>
+                        <td>
+                            <a href="#">新闻标题新闻标题新闻标题新闻标题新闻标题</a>
+                        </td>
+                        <td>
+                            某物
+                        </td>
+                        <td>
+                            9.0元
+                        </td>
+                        <td>
+                            <a href="">出售中</a>
+                        </td>
+                        <td>
+                            2010-07-04
+                        </td>
+                        <td>
+                            111
+                        </td>
+                        <td class="t_r">
+                            999
+                        </td>
+                        <td>
+                            <a href="#">预览</a> <a href="#">修改</a> <a href="#">删除</a> <a href="#">取消推送</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="das_tableb pages">
+            <div>
+                <span class="preview_off">&lt;&lt;上一页</span><a class="linknow">1</a> <a href="/huizong/20100705/1605177683-1.html">
+                    2</a> <a href="/huizong/20100705/1605177683-2.html">3</a> <a href="/huizong/20100705/1605177683-3.html">
+                        4</a> <a href="/huizong/20100705/1605177683-4.html">5</a> <a href="/huizong/20100705/1605177683-5.html">
+                            6</a> <a href="/huizong/20100705/1605177683-6.html">7</a> <a href="/huizong/20100705/1605177683-7.html">
+                                8</a> <a href="/huizong/20100705/1605177683-8.html">9</a> <a href="/huizong/20100705/1605177683-9.html">
+                                    10</a> <a href="/huizong/20100705/1605177683-1.html">下一页&gt;&gt;</a></div>
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+    <div id="abc" style="width: 200px; background-color: green; color: White;">
+        加载隐藏DIV</div>
+</body>
+</html>

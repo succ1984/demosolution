@@ -1,0 +1,16 @@
+﻿        <div class="brandShow widget">
+            <h3>$WidgetName</h3>
+#if($flg==1)
+            <ul>
+            
+                  #foreach( $item in $Car_Brand.Rows)
+#set($MasterBrandID=$item.MasterBrandID)
+            	<li><a href="/autolist-${MasterBrandID}.html"><img src="$item.cb_Logo" alt="$item.cb_Name" title="$item.cb_Name" /></a><p title="$item.cb_Name">
+#if($IsShowcbName==1)<a href="/autolist-${MasterBrandID}.html">$item.cb_Name</a></p>#end</li>
+                  #end
+            	
+            </ul>
+#else
+<div class="blc_ept"></div>
+#end 
+        </div>

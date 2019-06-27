@@ -1,0 +1,105 @@
+[
+{
+"id":"20524",
+"text":"Sound Blaster World of Warcraft Headset Microphone",
+"nodetype":"mpdt",
+"pdtName":"Sound Blaster World of Warcraft Headset Microphone",
+"pdtNumber":"SB World of Warcraft Headset Microphone_parent",
+"pdtModelNumber":"GA0100",
+"classes":"file"
+}
+,
+{
+"id":"20526",
+"text":"Sound Blaster World of Warcraft Wireless Headset Transmitter",
+"nodetype":"mpdt",
+"pdtName":"Sound Blaster World of Warcraft Wireless Headset Transmitter",
+"pdtNumber":"SB WoW Wireless Headset Transmitter_parent",
+"pdtModelNumber":"GA01000",
+"classes":"file"
+}
+,
+{
+"id":"20523",
+"text":"Sound Blaster World of Warcraft Headset Ear Cushions",
+"nodetype":"mpdt",
+"pdtName":"Sound Blaster World of Warcraft Headset Ear Cushions",
+"pdtNumber":"SB World of Warcraft Headset Ear Cushions_parent",
+"pdtModelNumber":"GA0100",
+"classes":"file"
+}
+,
+{
+"id":"20525",
+"text":"Sound Blaster World of Warcraft Wireless Headset Power Cable",
+"nodetype":"mpdt",
+"pdtName":"Sound Blaster World of Warcraft Wireless Headset Power Cable",
+"pdtNumber":"SB WoW Wireless Headset Power Cable_parent",
+"pdtModelNumber":"GA01000",
+"classes":"file"
+}
+,
+{
+"id":"20522",
+"text":"Sound Blaster World of Warcraft Headset USB Cable",
+"nodetype":"mpdt",
+"pdtName":"Sound Blaster World of Warcraft Headset USB Cable",
+"pdtNumber":"SB World of Warcraft Headset USB Cable_parent",
+"pdtModelNumber":"GA0110",
+"classes":"file"
+}
+,
+{
+"id":"20393",
+"text":"Sound Blaster World of Warcraft Headset Lens",
+"nodetype":"mpdt",
+"pdtName":"Sound Blaster World of Warcraft Headset Lens",
+"pdtNumber":"SoundBlasterWorldofWarcraftHeadsetLens_parent",
+"pdtModelNumber":"",
+"classes":"file"
+}
+,
+{
+"id":"19725",
+"text":"Sound Blaster World of Warcraft Tap Chat",
+"nodetype":"mpdt",
+"hasChildren":"true",
+"classes":"folder"
+}
+]
+
+datetime:2011-11-24 14:13:04
+ Headset",
+"nodetype":"mpdt",
+"pdtName":"Sound Blaster World of Warcraft Wireless Headset",
+"pdtNumber":"SoundBlasterWorldofWarcraftWirelessHeadset_parent",
+"pdtModelNumber":"",
+"classes":"file"
+}
+,
+{
+"id":"19066",
+"text":"Sound Blaster World of Warcraft Headset",
+"nodetype":"mpdt",
+"pdtName":"Sound Blaster World of Warcraft Headset",
+"pdtNumber":"Sound Blaster World of Warcraft USB Headset_parent",
+"pdtModelNumber":"",
+"classes":"file"
+}
+,
+{
+"id":"19725",
+"text":"Sound Blaster World of Warcraft Tap Chat",
+"nodetype":"mpdt",
+"hasChildren":"true",
+"classes":"folder"
+}
+]
+
+datetime:2011-11-24 14:13:04
+dtModelNumber":"",
+"classes":"file"
+}
+]
+
+datetime:2011-11-24 14:03:37

@@ -1,0 +1,45 @@
+﻿      #if($Typography==2)
+        <div class="employees widget">
+            <h3>$WidgetName</h3>
+#if($flg==1)
+         #foreach( $item in $DealerEnterpriseStaff.Rows) 
+           <div class="vcard">
+                <img src="$item.UpfileName"  class="photo"  alt="$item.StaffName" title="$item.StaffName" />
+                <ul>
+                	<li class="fn"><a href="/staffdetail/$item.StaffID.html" target="_blank">$item.StaffName</a>#if($item.StaffLevel==1)<i class="jiangzhang"></i>#end</li>
+                	<li class="org">$item.StaffPost</li>
+#set($CallCenterNumber=$PageCommon.GetVendor400TelPhone($DealerID))
+#if($CallCenterNumber!="")<li class="tel">$CallCenterNumber #if($item.StaffTel!="")转 $item.StaffTel #end</li>#end
+#if($item.StaffMobile!="")<li class="tel">$item.StaffMobile</li>#end
+#if($item.StaffPhone!="")<li class="tel">$item.StaffPhone</li>#end
+
+                </ul>
+            </div>
+         #end 
+#else
+<div class="blc_ept"></div>
+#end 
+        </div>
+        #elseif($Typography==1)
+        <div class="employeesAlien widget">
+    <h3>$WidgetName</h3>
+#if($flg==1)
+    #foreach( $item in $DealerEnterpriseStaff.Rows)
+    <div class="vcard">
+        <img src="$item.UpfileName" class="photo" alt="$item.StaffName" title="$item.StaffName" />
+        <ul>
+            <li class="fn"><a href="/staffdetail/$item.StaffID.html" target="_blank">$item.StaffName</a>#if($item.StaffLevel==1)<i class="jiangzhang"></i>#end</li>
+            <li class="org">$item.StaffPost</li>
+#set($CallCenterNumber=$PageCommon.GetVendor400TelPhone($DealerID))
+#if($CallCenterNumber!="")<li class="tel">$CallCenterNumber #if($item.StaffTel!="")转 $item.StaffTel #end</li>#end
+#if($item.StaffMobile!="")<li class="tel">$item.StaffMobile</li>#end
+#if($item.StaffPhone!="")<li class="tel">$item.StaffPhone</li>#end
+
+        </ul>
+    </div>
+    #end 
+#else
+<div class="blc_ept"></div>
+#end 
+</div>
+#end

@@ -1,0 +1,9 @@
+﻿                    <div class="lm_foot widget" id="SetFoot">CopyRight2010
+                 #if($flg==1)
+ #if($DealerInfo.ICPNumber!="") &emsp;<a href="http://www.miibeian.gov.cn/">$DealerInfo.ICPNumber</a>#end
+#if($IsShowAdd==1)&emsp;地址：$DealerInfo.vendorSaleAddr #end 
+#if($IsShowTel==1)#set($CallCenterNumber=$PageCommon.GetVendor400TelPhone($DealerID))
+
+ &emsp; 联系电话：#if($CallCenterNumber!="")$PageCommon.Telphone($CallCenterNumber,$DealerInfo.vendorTel,$CallCenterNumber)#else $DealerInfo.vendorTel #end #end 
+#end
+                    </div>

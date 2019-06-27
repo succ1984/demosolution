@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Image loading...</title>
+    <style type="text/css">
+        *{
+            margin:0px; padding:0px;
+        }
+        body{
+            font-size:12px;
+            padding:10px;             
+        }
+        .buttons{   
+            border:1px solid #CDCDCD;
+            margin-bottom:10px;
+        }
+        .mt10{
+           margin-top:15px;
+           overflow:hidden;
+           padding:10px 10px 20px;
+           border:2px solid #E3E3E3;
+        } 
+        .fl{
+            float:left;
+        }      
+        .fr{
+            float:right;
+        }
+        .pre{
+            background-color:#CCCCCC;
+            color:Gray;
+        }
+        .formText{
+            width:200px;
+            border:1px solid #CCCDDD;
+            height:25px; line-height:25px;
+        }
+        .formButton{
+            margin-left:15px;
+            border:1px solid #CCCDDD;
+            
+            padding:5px;
+        }       
+        .mt10 h2{
+            font-size:15px; color:Black; font-weight:700;
+            background-color:#EEEEEE;
+            height:25px; line-height:25px;
+            padding-left:10px;
+        }
+        .mt10 p{          
+            padding:10px;
+        }
+        .mt10 p span{
+            display:block;
+            clear:both;
+            background-color:#EEEEEE;
+            line-height:18px;
+            overflow:hidden;
+            margin-top:5px; padding-left:20px;
+        }
+        .descrip{
+            background: none repeat scroll 0 0 #FFFFDD;
+            border: 1px solid #F3C16B;
+            clear: both;
+            overflow: hidden;
+            padding: 5px 10px;
+            font-size:12px;
+            line-height:1.5em;
+            word-wrap:break-word;
+            word-break:break-line;
+        }
+        #img1{
+            background-image:url("app/effects/images/loading-jd.gif");
+            background-position:center center; background-repeat:no-repeat;
+        }
+    </style>
+    <script src="../../js/jsLib.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        var base = JU.base;
+        var effect = JU.effect;
+        JU.domReady(function () {
+            JU.effect.loadImage("http://d287ku8w5owj51.cloudfront.net/inline/products/21530/fea_go_places.png", function (img) {
+                base.$("img1").innerHTML = "<img src=\"CONTENT\"/>".replace("CONTENT", img.src);                
+            });
+        });
+    </script>
+</head>
+<body>
+        <div class="mt10">
+            <p id="img1">
+                Image is loading..
+            </p>
+        </div>
+</body>
+</html>

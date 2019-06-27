@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Root>
+    <Alert>
+        <![CDATA[
+   <div class="ui-dialog">
+        <div class="ui-dialog-titlebar">
+            <span class="ui-dialog-title" id="ui-id-1">
+                {title}</span>
+            <a class="ui-dialog-titlebar-close" href="#">
+                <span class="ui-icon-closethick">
+                    关闭</span></a>
+        </div>
+        <div scrollleft="0" scrolltop="0" class="ui-dialog-content" style="">
+           {content}
+        </div>
+        <div class="ui-dialog-buttonpane">
+            <div class="ui-dialog-buttonset">
+                <button class="ui_bottom_y ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"
+                    type="button">
+                    <span class="ui-button-text">
+                        确定</span></button>               
+            </div>         
+        </div>
+    </div>
+    
+]]>
+    </Alert>
+</Root>

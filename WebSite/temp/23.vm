@@ -1,0 +1,100 @@
+﻿#if($FormatType==1)      
+<div class="news widget">
+    <h3>$WidgetName</h3>
+#if($flg==1)
+    <div class="newsBlc">
+      <h4><em>
+        #foreach( $item in $DealerEnterpriseNews.Rows) 
+#set($hrefF="/newsdetail/")
+#if($item.NewsType==1)
+#set($hrefF="/newsdetail/1/")
+#end
+#set($hrefE=".html")
+            #if(${velocityCount}==1)
+               <a target="_blank" href="$hrefF$item.NewsID$hrefE" title="$item.NewsTitle">$PageCommon.CutString($item.NewsTitle,18)</a>
+            #end 
+         #end 
+</em></h4>
+        <ul>
+         #foreach( $item in $DealerEnterpriseNews.Rows ) 
+#set($hrefF="/newsdetail/")
+#if($item.NewsType==1)
+#set($hrefF="/newsdetail/1/")
+#end
+#set($hrefE=".html")
+            #if(${velocityCount}>1)
+            <li>
+               <a target="_blank" href="$hrefF$item.NewsID$hrefE" title="$item.NewsTitle">$PageCommon.CutString($item.NewsTitle,18)</a><small>$PageCommon.SetFormat($item.NewsPubTime,1)</small>
+            </li>
+            #end 
+         #end 
+
+        	</ul>
+     </div>
+     <span class="more"><a href="/newslist.html">更多&gt;&gt;</a></span>
+#else
+<div class="blc_ept"></div>
+#end 
+
+</div>
+#elseif($FormatType==2)
+<div class="news widget">
+            <h3>$WidgetName</h3>
+#if($flg==1)
+            <div class="newsBlc">
+#foreach( $item in $DealerEnterpriseNews.Rows ) 
+#set($hrefF="/newsdetail/")
+#if($item.NewsType==1)
+#set($hrefF="/newsdetail/1/")
+#end
+#set($hrefE=".html")
+            #if(${velocityCount}==1)
+            	<h4><em  class="tl"><a target="_blank"  href="$hrefF$item.NewsID$hrefE" title="$item.NewsTitle">$PageCommon.CutString($item.NewsTitle,18)</a></em>
+            	<span>$PageCommon.NewCutString($item.Summary,60)<a target="_blank" href="$hrefF$item.NewsID$hrefE">详情&gt;&gt;</a></span></h4>
+       #end 
+         #end          
+ <ul>
+                             #foreach( $item in $DealerEnterpriseNews.Rows )
+#set($hrefF="/newsdetail/")
+#if($item.NewsType==1)
+#set($hrefF="/newsdetail/1/")
+#end
+#set($hrefE=".html") 
+            #if(${velocityCount}>1)
+            
+            <li>
+               <a target="_blank" href="$hrefF$item.NewsID$hrefE" title="$item.NewsTitle">$PageCommon.CutString($item.NewsTitle,18)</a><small>$PageCommon.SetFormat($item.NewsPubTime,1)</small>
+            </li>
+            #end 
+         #end                 </ul>
+            </div>
+            <span class="more"><a href="/newslist.html">更多&gt;&gt;</a></span>
+#else
+<div class="blc_ept"></div>
+#end 
+
+        </div>
+#elseif($FormatType==3)
+  <div class="news widget">
+            <h3>$WidgetName</h3>
+
+#if($flg==1)
+            <div class="newsBlc">
+                <ul>
+       #foreach( $item in $DealerEnterpriseNews.Rows ) 
+#set($hrefF="/newsdetail/")
+#if($item.NewsType==1)
+#set($hrefF="/newsdetail/1/")
+#end
+#set($hrefE=".html")
+            <li>
+               <a target="_blank" href="$hrefF$item.NewsID$hrefE" title="$item.NewsTitle">$PageCommon.CutString($item.NewsTitle,18)</a><small>$PageCommon.SetFormat($item.NewsPubTime,1)</small>
+            </li>
+         #end                 </ul>
+            </div>
+            <span class="more"><a href="/newslist.html">更多&gt;&gt;</a></span>
+#else
+<div class="blc_ept"></div>
+#end 
+        </div>
+#end

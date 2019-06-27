@@ -1,0 +1,20 @@
+﻿   <div class="carshow carproduct widget">
+       <h3>$WidgetName</h3>
+       #if($flg==1)
+           #foreach($item in $Merchandise.Rows)
+#set($hrefF="/productdetail/")
+#set($hrefE=".html")
+
+           <div class="carshowBlc">
+               <a href="$hrefF$item.MDID$hrefE" target="_blank"><img alt="$item.MName" title="$item.MName" width="88" height="66" src="$item.MFocusPic"></a>
+                  <ul>           
+                        <li class="brand"><a  href="$hrefF$item.MDID$hrefE" title="$item.MName" target="_blank">$item.MName</a></li>
+                   
+                        <li class="price"><span>￥$item.MSalePrice</span></li>
+                  </ul>
+           </div>
+           #end
+        #end
+           <span class="more"><a href="/productlist.html">更多&gt;&gt;</a></span>
+            
+   </div>

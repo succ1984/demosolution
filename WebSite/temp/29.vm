@@ -1,0 +1,52 @@
+﻿<div class="bizcard widget">
+#if($flg==1)
+#set($CallCenterNumber=$PageCommon.GetVendor400TelPhone($DealerID))
+
+    <div class="bizcardBlc">
+        <h3 title="$DealerInfo.vendorFullName">
+            $DealerInfo.vendorName</h3>
+        <ul>
+            <li>
+                <label>
+                    企业全称：</label><p class="brand">
+                        $DealerInfo.vendorFullName</p>
+            </li>
+            <li>
+                <label>
+                    主营品牌：</label><p class="brand">
+                        [$DealerInfo.MainBrand]</p>
+            </li>
+#if($CallCenterNumber!="")
+                   <li>
+                <label>
+                    销售电话：</label><p class="xtel">$CallCenterNumber</p>
+            </li>
+#end
+                  <li>
+                <label>
+                    联系电话：</label><p class="tel" title="$DealerInfo.vendorTel">
+                        $DealerInfo.vendorTel</p>
+            </li>
+            <li>
+                <label>
+                    企业网站：</label><p class="site">
+                        <a target="_blank" href="$PageCommon.UrlCheck($DealerInfo.vendorWebSite)">$DealerInfo.vendorWebSite</a></p>
+            </li>
+      #if($DealerInfo.vendorEmail!="")
+            <li>
+                <label>
+                    电子邮箱：</label><p class="mail">
+                        <a href="mailto:$DealerInfo.vendorEmail">$DealerInfo.vendorEmail</a></p>
+            </li>
+      #end
+            <li>
+                <label>
+                    店面地址：</label><p class="adress">
+                        $DealerInfo.vendorSaleAddr</p>
+            </li>
+        </ul>
+    </div>
+#else
+<div class="blc_ept"></div>
+#end 
+</div>

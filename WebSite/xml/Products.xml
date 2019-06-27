@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Products>
+  <Product id="1">
+    <title>
+     	ZEN X-Fi2
+    </title>
+    <Brief>
+      Available in 8/16/32/64GB, ZEN X-Fi2 supports audio formats like Free Lossless Audio Codec (FLAC) and iTunes Plus. It also supports RSS feeds offline.
+    </Brief>
+	  <ProductID>18965</ProductID>
+    <DefaultImage>/mp3Revamp/images/zenxfi2_1.jpg</DefaultImage>
+    <Images>
+      <!--<image id="1">
+        <Normal>zenxfi2_1.jpg</Normal>
+        <Thumb></Thumb>
+      </image>-->
+      <image id="2" alt="ZEN X-Fi2">
+        <Normal>/mp3Revamp/images/zenxfi2_2.jpg</Normal>
+        <Thumb>/mp3Revamp/images/thumb_zenxfi2_1.png</Thumb>
+      </image>
+      <image id="3" alt="ZEN X-Fi2">
+        <Normal>/mp3Revamp/images/zenxfi2_3.jpg</Normal>
+        <Thumb>/mp3Revamp/images/thumb_zenxfi2_2.png</Thumb>
+      </image>
+      <image id="4" alt="ZEN X-Fi2">
+        <Normal>/mp3Revamp/images/zenxfi2_4.jpg</Normal>
+        <Thumb>/mp3Revamp/images/thumb_zenxfi2_3.png</Thumb>
+      </image>      
+    </Images>
+
+    <Links>
+      <ProductInfo>
+        
+      </ProductInfo>
+      <Microsite>
+		  http://www.creative.com/products/mp3/ZenXFi2/
+	  </Microsite>
+      <Demo>
+		  <![CDATA[
+		    http://asia.creative.com/products/popup.asp?product=18965&nav=productDemo
+		  ]]>
+		
+	  </Demo>
+      <GetStarted>
+		  http://www.creative.com/getstarted/zenxfi2/
+	  </GetStarted>
+    </Links>
+    
+    
+  </Product>
+
+  <Product id="2">
+    <title>
+      ZEN X-Fi Style
+    </title>
+    <Brief>
+      Enjoy pure music on-the-go with X-Fi technology built into a pocket-sized media player. Music, photos, and videos - all on a vibrant 2.4" screen.
+    </Brief>
+	  <ProductID>19237</ProductID>
+    <DefaultImage>/mp3Revamp/images/zenxfistyle/Main_zenxfi_style.jpg</DefaultImage>
+    <Images>
+      <!--<image id="1">
+        <Normal>Main_zenxfi_style.jpg</Normal>
+        <Thumb></Thumb>
+      </image>-->
+      <image id="2" alt="ZEN X-Fi Style">
+        <Normal>/mp3Revamp/images/zenxfistyle/Main_zenxfi_style2.jpg</Normal>
+        <Thumb>/mp3Revamp/images/zenxfistyle/thumb_zenxfistyle_2.png</Thumb>
+      </image>
+      <image id="3" alt="ZEN X-Fi Style">
+        <Normal>/mp3Revamp/images/zenxfistyle/Main_zenxfi_style3.jpg</Normal>
+        <Thumb>/mp3Revamp/images/zenxfistyle/thumb_zenxfistyle_1.png</Thumb>
+      </image>      
+    </Images>
+
+    <Links>
+      <ProductInfo>
+
+      </ProductInfo>
+      <Microsite>
+		
+      </Microsite>
+      <Demo>
+		<![CDATA[
+		http://asia.creative.com/products/popup.asp?product=19237&nav=productDemo
+		]]>
+      </Demo>
+      <GetStarted>
+		  http://www.creative.com/getstarted/zenxfistyle/
+	  </GetStarted>
+    </Links>
+    
+    
+  </Product>
+  
+</Products>

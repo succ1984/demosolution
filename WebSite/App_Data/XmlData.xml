@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<book>
+    <item>
+        <bookName>C#开发</bookName>
+        <author>陈宽田</author>
+    </item>
+    <item>
+        <bookName>Ado.net开发</bookName>
+        <author>陈成城</author>
+    </item>
+    <item>
+        <bookName>English</bookName>
+        <author>succ</author>
+    </item>
+    <item>
+        <bookName>Math</bookName>
+        <author>ccsu</author>
+    </item>
+    <item>
+        <bookName>Chinese</bookName>
+        <author>David</author>
+    </item>
+</book>

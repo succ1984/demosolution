@@ -1,0 +1,12 @@
+﻿<div class="intro widget singlewidget" >
+        <h3>$WidgetName</h3>
+#if($flg==1)
+ <p>
+  $PageCommon.VHtmlDecode($SingleWidget.Connect)               
+</p>
+#else
+
+<div class="blc_ept"></div>
+
+#end 
+</div>

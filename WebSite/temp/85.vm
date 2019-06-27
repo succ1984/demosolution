@@ -1,0 +1,85 @@
+﻿#if($CarFormatType==2)
+<div class="carshow widget">
+            <h3>$WidgetName</h3>
+#if($flg==1)
+            #foreach( $item in $DealerCarsBrand.Rows)
+#set($hrefF="/price_detail/")
+#set($hrefE=".html")
+            <div class="carshowBlc">
+                <a target="_blank" href="$hrefF$item.CarID$hrefE">#if($item.CarPic!="") <img src="$PageCommon.ImagesPath($item.CarPic,0)" #else <img src="$PageCommon.ImagesPath($item.ImgUrl1,1)" #end alt="$item.CSShowName $item.CarName #if($item.CarYearType!="")$item.CarYearType #end  #if($item.Ready=="3")(未上市)#end" 
+title="$item.CSShowName $item.CarName #if($item.CarYearType!="")$item.CarYearType #end  #if($item.Ready=="3")(未上市)#end" /></a>
+                <ul>           
+                	<li class="brand"><a target="_blank" title="$item.CSShowName $item.CarName #if($item.CarYearType!="")$item.CarYearType #end#if($item.Ready=="3")(未上市)#end" href="$hrefF$item.CarID$hrefE">$item.CSShowName&emsp;$item.CarName #if($item.CarYearType!="")&emsp;$item.CarYearType #end#if($item.Ready=="3")(未上市)#end</a></li>
+                    #if($IsShowPrice==1)<li class="price">#if($item.Ready!="3")<span>$PageCommon.StringFormatSingle($item.vendorPrice)</span><small>万 </small>#else <span>待定</span> #end</li>#end
+                </ul>
+            </div>
+             #end 
+#else
+<div class="blc_ept"></div>
+#end     
+        </div>
+ #else 
+ 
+ <div class="carshowAlien widget">
+            <h3>$WidgetName</h3>
+#if($flg==1)
+            #foreach( $item in $DealerCarsBrand.Rows)
+#set($hrefF="/price_detail/")
+#set($hrefE=".html")
+            <div class="carshowBlc">
+                <a target="_blank" href="$hrefF$item.CarID$hrefE">#if($item.CarPic!="") <img src="$PageCommon.ImagesPath($item.CarPic,0)" #else <img src="$PageCommon.ImagesPath($item.ImgUrl1,1)" #end alt="$item.CSShowName $item.CarName #if($item.CarYearType!="")$item.CarYearType #end  #if($item.Ready=="3")(未上市)#end" 
+title="$item.CSShowName $item.CarName #if($item.CarYearType!="")$item.CarYearType #end  #if($item.Ready=="3")(未上市)#end" /></a>
+                <ul>           
+                	<li class="brand"><a target="_blank" title="$item.CSShowName $item.CarName #if($item.CarYearType!="")$item.CarYearType #end#if($item.Ready=="3")(未上市)#end" href="$hrefF$item.CarID$hrefE">$item.CSShowName&emsp;$item.CarName #if($item.CarYearType!="")&emsp;$item.CarYearType #end#if($item.Ready=="3")(未上市)#end</a></li>
+                    #if($IsShowPrice==1)<li class="price">#if($item.Ready!="3")<span>$PageCommon.StringFormatSingle($item.vendorPrice)</span><small>万 </small>#else <span>待定</span> #end</li>#end
+                </ul>
+            </div>
+             #end   
+#else
+<div class="blc_ept"></div>
+#end   
+        </div>
+ 
+ #end #if($CarFormatType==2)
+<div class="carshow widget">
+            <h3>$WidgetName</h3>
+#if($flg==1)
+            #foreach( $item in $DealerCarsBrand.Rows)
+#set($hrefF="/price_detail/")
+#set($hrefE=".html")
+            <div class="carshowBlc">
+                <a target="_blank" href="$hrefF$item.CarID$hrefE">#if($item.CarPic!="")<img src="$PageCommon.ImagesPath($item.CarPic,0)"  #else <img src="$PageCommon.ImagesPath($item.ImgUrl1,1)"  #endalt="$item.CSShowName $item.CarName #if($item.CarYearType!="")$item.CarYearType #end  #if($item.Ready=="3")(未上市)#end" 
+title="$item.CSShowName $item.CarName #if($item.CarYearType!="")$item.CarYearType #end  #if($item.Ready=="3")(未上市)#end" /></a>
+                <ul>           
+                	<li class="brand"><a target="_blank" title="$item.CSShowName $item.CarName #if($item.CarYearType!="")$item.CarYearType #end#if($item.Ready=="3")(未上市)#end" href="$hrefF$item.CarID$hrefE">$item.CSShowName&emsp;$item.CarName #if($item.CarYearType!="")&emsp;$item.CarYearType #end#if($item.Ready=="3")(未上市)#end</a></li>
+                    #if($IsShowPrice==1)<li class="price">#if($item.Ready!="3")<span>$PageCommon.StringFormatSingle($item.vendorPrice)</span><small>万 </small>#else <span>待定</span> #end</li>#end
+                </ul>
+            </div>
+             #end 
+#else
+<div class="blc_ept"></div>
+#end     
+        </div>
+ #else 
+ 
+ <div class="carshowAlien widget">
+            <h3>$WidgetName</h3>
+#if($flg==1)
+            #foreach( $item in $DealerCarsBrand.Rows)
+#set($hrefF="/price_detail/")
+#set($hrefE=".html")
+            <div class="carshowBlc">
+                <a target="_blank" href="$hrefF$item.CarID$hrefE">#if($item.CarPic!="")<img src="$PageCommon.ImagesPath($item.CarPic,0)" #else <img src="$PageCommon.ImagesPath($item.ImgUrl1,1)" #end alt="$item.CSShowName $item.CarName #if($item.CarYearType!="")$item.CarYearType #end  #if($item.Ready=="3")(未上市)#end" 
+title="$item.CSShowName $item.CarName #if($item.CarYearType!="")$item.CarYearType #end  #if($item.Ready=="3")(未上市)#end" /></a>
+                <ul>           
+                	<li class="brand"><a target="_blank" title="$item.CSShowName $item.CarName #if($item.CarYearType!="")$item.CarYearType #end#if($item.Ready=="3")(未上市)#end" href="$hrefF$item.CarID$hrefE">$item.CSShowName&emsp;$item.CarName #if($item.CarYearType!="")&emsp;$item.CarYearType #end#if($item.Ready=="3")(未上市)#end</a></li>
+                    #if($IsShowPrice==1)<li class="price">#if($item.Ready!="3")<span>$PageCommon.StringFormatSingle($item.vendorPrice)</span><small>万 </small>#else <span>待定</span> #end</li>#end
+                </ul>
+            </div>
+             #end   
+#else
+<div class="blc_ept"></div>
+#end   
+        </div>
+ 
+ #end 
