@@ -10,7 +10,7 @@ namespace ConsoleApp
         public static readonly object o = new Object();
 
 
-        
+         
 
 
 
