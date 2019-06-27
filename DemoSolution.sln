@@ -30,6 +30,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "WebSite", "WebSite\", "{919
 		VWDPort = "5584"
 		VWDDynamicPort = "true"
 		VWDVirtualPath = "/"
+		SlnRelativePath = "WebSite\"
 		StartServerOnDebug = "false"
 	EndProjectSection
 EndProject
